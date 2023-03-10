@@ -1,0 +1,27 @@
+{
+  "name": "msngr",
+  "version": "1.0.0",
+  "description": "Messenger",
+  "main": "index.js",
+  "scripts": {
+    "dev": "parcel index.html",
+    "build": "parcel build index.html",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "iDenisOff",
+  "license": "ISC",
+  "devDependencies": {
+    "@parcel/transformer-inline-string": "^2.8.3",
+    "@parcel/transformer-sass": "^2.8.3",
+    "express": "^4.18.2",
+    "handlebars": "^4.7.7",
+    "parcel": "^2.8.3",
+    "postcss": "^8.4.21",
+    "postcss-custom-media": "^9.1.2",
+    "postcss-easy-import": "^4.0.0",
+    "postcss-for": "^2.1.1",
+    "postcss-mixins": "^9.0.4",
+    "postcss-nested": "^6.0.1"
+  }
+}
