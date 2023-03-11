@@ -1,5 +1,5 @@
-import { SignUp } from './src/pages/SignUp/signUp';
+import { Error } from './src/pages/Error/error';
 
 window.addEventListener('load', () => {
-    document.getElementById('root').innerHTML = SignUp();
+    document.getElementById('root').innerHTML = Error({ code: '404', text: 'Не туда попали' });
 });

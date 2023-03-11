@@ -9,3 +9,4 @@ export const Email = 'Почта';
 export const FirstName = 'Имя';
 export const SecondName = 'Фамилия';
 export const Phone = 'Телефон';
+export const GoBack = 'Назад к чатам';
