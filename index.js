@@ -1,5 +1,5 @@
-import { SignIn } from './src/pages/SignIn/signIn';
+import { SignUp } from './src/pages/SignUp/signUp';
 
 window.addEventListener('load', () => {
-    document.getElementById('root').innerHTML = SignIn();
+    document.getElementById('root').innerHTML = SignUp();
 });

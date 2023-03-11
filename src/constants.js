@@ -1,0 +1,11 @@
+export const LogIn = 'Вход';
+export const Registration = 'Регистрация';
+export const UserName = 'Логин';
+export const Passwd = 'Пароль';
+export const PasswdRetry = 'Пароль (ещё раз)';
+export const Enter = 'Войти';
+export const Register = 'Зарегистрироваться';
+export const Email = 'Почта';
+export const FirstName = 'Имя';
+export const SecondName = 'Фамилия';
+export const Phone = 'Телефон';
