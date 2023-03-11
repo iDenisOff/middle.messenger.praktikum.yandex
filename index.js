@@ -1,5 +1,5 @@
-import { Error } from './src/pages/Error/error';
+import { Chats } from './src/pages/Chats/chats';
 
 window.addEventListener('load', () => {
-    document.getElementById('root').innerHTML = Error({ code: '404', text: 'Не туда попали' });
+    document.getElementById('root').innerHTML = Chats();
 });
