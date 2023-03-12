@@ -1,5 +1,5 @@
-import { ProfileEdit } from './src/pages/ProfileEdit/profileEdit';
+import { PasswdEdit } from './src/pages/PasswdEdit/passwdEdit';
 
 window.addEventListener('load', () => {
-    document.getElementById('root').innerHTML = ProfileEdit();
+    document.getElementById('root').innerHTML = PasswdEdit();
 });
