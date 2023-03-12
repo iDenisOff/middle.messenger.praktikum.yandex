@@ -8,7 +8,8 @@ import {
     UserName,
     FirstName,
     SecondName,
-    Phone
+    Phone,
+    DisplayName
 } from '/src/constants';
 import back from '/static/back.svg';
 import avatar from '/static/avatar.svg';
@@ -37,7 +38,7 @@ export const Profile = () => {
             login: Row({ title: UserName, value: login }),
             firstName: Row({ title: FirstName, value: firstName }),
             secondName: Row({ title: SecondName, value: secondName }),
-            displayName: Row({ title: Email, value: displayName }),
+            displayName: Row({ title: DisplayName, value: displayName }),
             phone: Row({ title: Phone, value: phone }),
             editProfile: RowWithLink({ link: Link({ href: '#', text: EditData })}),
             editPasswd: RowWithLink({ link: Link({ href: '#', text: EditPasswd })}),

@@ -1,5 +1,5 @@
-import { Profile } from './src/pages/Profile/profile';
+import { ProfileEdit } from './src/pages/ProfileEdit/profileEdit';
 
 window.addEventListener('load', () => {
-    document.getElementById('root').innerHTML = Profile();
+    document.getElementById('root').innerHTML = ProfileEdit();
 });

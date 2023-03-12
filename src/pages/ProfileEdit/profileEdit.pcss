@@ -1,0 +1,48 @@
+.profile-edit {
+    min-height: 100vh;
+
+    display: grid;
+    grid-template-columns: 64px auto;
+
+    &__back {
+        display: flex;
+
+        background-color: #FBFBFB;
+    }
+
+    &__back img {
+        margin: auto;
+    }
+
+    &__back:hover{
+        background-color: #edeaea;
+
+        cursor: pointer;
+    }
+
+    &__content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &__container {
+            min-width: 510px;
+
+            &_avatar {
+                display: flex;
+            }
+
+            &_avatar img {
+                margin: auto;
+            }
+
+            &_data {
+                margin: 90px 0 50px 0;
+            }
+
+            &_button {
+                margin: 0 23%;
+            }
+        }
+    }
+}

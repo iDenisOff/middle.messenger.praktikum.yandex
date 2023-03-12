@@ -10,3 +10,5 @@ export const FirstName = 'Имя';
 export const SecondName = 'Фамилия';
 export const Phone = 'Телефон';
 export const GoBack = 'Назад к чатам';
+export const Save = 'Сохранить';
+export const DisplayName = 'Имя в чате';
