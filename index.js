@@ -1,5 +1,5 @@
-import { Chats } from './src/pages/Chats/chats';
+import { Profile } from './src/pages/Profile/profile';
 
 window.addEventListener('load', () => {
-    document.getElementById('root').innerHTML = Chats();
+    document.getElementById('root').innerHTML = Profile();
 });

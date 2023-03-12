@@ -1,0 +1,52 @@
+.profile {
+    min-height: 100vh;
+
+    display: grid;
+    grid-template-columns: 64px auto;
+
+    &__back {
+        display: flex;
+
+        background-color: #FBFBFB;
+    }
+
+    &__back img {
+        margin: auto;
+    }
+
+    &__back:hover{
+        background-color: #edeaea;
+
+        cursor: pointer;
+    }
+
+    &__content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &__container {
+            min-width: 510px;
+
+            &_avatar {
+                display: flex;
+            }
+
+            &_avatar img {
+                margin: auto;
+            }
+
+            &_name {
+                margin: 20px 0 60px 0;
+                text-align: center;
+
+                font-weight: 600;
+                font-size: 16px;
+            }
+
+            &_data {
+                margin-bottom: 50px;
+            }
+        }
+    }
+}
