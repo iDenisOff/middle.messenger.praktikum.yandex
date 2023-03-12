@@ -36,10 +36,11 @@ export const SignIn = () => {
 
     return Handlebars
         .compile(signIn)({
+            onEnter: '/chats',
             title: LogIn,
             login: inputLogin,
             password: inputPassword,
             signIn: Button({ text: Enter }),
-            link: Link({ href: '#', text: Register })
+            link: Link({ href: '/signUp', text: Register })
         });
 };

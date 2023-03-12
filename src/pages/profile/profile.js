@@ -32,6 +32,7 @@ export const Profile = () => {
     return Handlebars
         .compile(profile)({
             back: back,
+            goBack: '/chats',
             avatar: avatar,
             name: displayName,
             email: Row({ title: Email, value: email }),
@@ -40,8 +41,8 @@ export const Profile = () => {
             secondName: Row({ title: SecondName, value: secondName }),
             displayName: Row({ title: DisplayName, value: displayName }),
             phone: Row({ title: Phone, value: phone }),
-            editProfile: RowWithLink({ link: Link({ href: '#', text: EditData })}),
-            editPasswd: RowWithLink({ link: Link({ href: '#', text: EditPasswd })}),
-            exit: RowWithLink({ link: Link({ href: '#', text: Exit })})
+            editProfile: RowWithLink({ link: Link({ href: '/profileEdit', text: EditData })}),
+            editPasswd: RowWithLink({ link: Link({ href: '/passwdEdit', text: EditPasswd })}),
+            exit: RowWithLink({ link: Link({ href: '/signIn', text: Exit })})
         });
 };

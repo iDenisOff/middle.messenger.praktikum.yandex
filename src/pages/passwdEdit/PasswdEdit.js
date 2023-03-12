@@ -21,7 +21,9 @@ export const PasswdEdit = () => {
     return Handlebars
         .compile(passwdEdit)({
             back: back,
+            goBack: '/profile',
             avatar: avatar,
+            onSave: '/profile',
             oldPasswd: EditableRow({ title: OldPasswd, type: 'password', value: oldPasswd }),
             newPasswd: EditableRow({ title: NewPasswd, type: 'password', value: newPasswd }),
             newPasswdRetry: EditableRow({ title: NewPasswdRetry, type: 'password', value: newPasswdRetry }),

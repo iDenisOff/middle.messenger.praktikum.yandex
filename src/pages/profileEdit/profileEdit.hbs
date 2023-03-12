@@ -1,13 +1,13 @@
 <div class="profile-edit">
-    <div class="profile-edit__back">
+    <div class="profile-edit__back" onclick="window.location.href='{{goBack}}'">
         <img src={{back}} alt="back" />
     </div>
     <div class="profile-edit__content">
-        <div class="profile-edit__content__container">
-            <div class="profile-edit__content__container_avatar">
+        <form class="profile-edit__content__form" action={{onSave}}>
+            <div class="profile-edit__content__form_avatar">
                 <img src={{avatar}} alt="avatar" />
             </div>
-            <div class="profile-edit__content__container_data">
+            <div class="profile-edit__content__form_data">
                 {{{email}}}
                 {{{login}}}
                 {{{firstName}}}
@@ -15,9 +15,9 @@
                 {{{displayName}}}
                 {{{phone}}}
             </div>
-            <div class="profile-edit__content__container_button">
+            <div class="profile-edit__content__form_button">
                 {{{save}}}
             </div>
-        </div>
+        </form>
     </div>
 </div>

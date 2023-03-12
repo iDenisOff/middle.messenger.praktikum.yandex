@@ -28,7 +28,9 @@ export const ProfileEdit = () => {
     return Handlebars
         .compile(profileEdit)({
             back: back,
+            goBack: '/profile',
             avatar: avatar,
+            onSave: '/profile',
             email: EditableRow({ title: Email, value: email }),
             login: EditableRow({ title: UserName, value: login }),
             firstName: EditableRow({ title: FirstName, value: firstName }),

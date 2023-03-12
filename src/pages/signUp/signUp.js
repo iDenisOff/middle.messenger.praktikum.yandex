@@ -45,6 +45,7 @@ export const SignUp = () => {
 
     return Handlebars
         .compile(signUp)({
+            onEnter: '/chats',
             title: Registration,
             email: inputEmail,
             login: inputLogin,
@@ -54,6 +55,6 @@ export const SignUp = () => {
             password: inputPassword,
             passwordRetry: inputPasswordRetry,
             signUp: Button({ text: Register }),
-            link: Link({ href: '#', text: Enter }),
+            link: Link({ href: '/signIn', text: Enter }),
         });
 };
