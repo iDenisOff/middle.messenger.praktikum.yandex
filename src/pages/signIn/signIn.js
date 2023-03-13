@@ -23,12 +23,14 @@ export const SignIn = () => {
 
     const inputLogin = Input({
         label: UserName,
+        name: 'login',
         value: login,
         error: loginError
     });
 
     const inputPassword = Input({
         label: Passwd,
+        name: 'password',
         type: 'password',
         value: password,
         error: passwordError

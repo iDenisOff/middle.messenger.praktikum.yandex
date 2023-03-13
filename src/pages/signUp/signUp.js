@@ -30,15 +30,16 @@ export const SignUp = () => {
 
     let passwordError = '';
 
-    const inputEmail = Input({ label: Email, type: 'email', value: email });
-    const inputLogin = Input({ label: UserName, value: login });
-    const inputFirstName = Input({ label: FirstName, value: firstName });
-    const inputSecondName = Input({ label: SecondName, value: secondName });
-    const inputPhone = Input({ label: Phone, type: 'tel', value: phone });
-    const inputPassword = Input({ label: Passwd, type: 'password', value: password });
+    const inputEmail = Input({ label: Email, type: 'email', name: 'email', value: email });
+    const inputLogin = Input({ label: UserName, name: 'login', value: login });
+    const inputFirstName = Input({ label: FirstName, name: 'first_name', value: firstName });
+    const inputSecondName = Input({ label: SecondName, name: 'second_name', value: secondName });
+    const inputPhone = Input({ label: Phone, type: 'tel', name: 'phone', value: phone });
+    const inputPassword = Input({ label: Passwd, type: 'password', name: 'password', value: password });
     const inputPasswordRetry = Input({
         label: PasswdRetry,
         type: 'password',
+        name: 'password_retry',
         value: passwordRetry,
         error: passwordError
     });

@@ -31,12 +31,12 @@ export const ProfileEdit = () => {
             goBack: '/profile',
             avatar: avatar,
             onSave: '/profile',
-            email: EditableRow({ title: Email, value: email }),
-            login: EditableRow({ title: UserName, value: login }),
-            firstName: EditableRow({ title: FirstName, value: firstName }),
-            secondName: EditableRow({ title: SecondName, value: secondName }),
-            displayName: EditableRow({ title: DisplayName, value: displayName }),
-            phone: EditableRow({ title: Phone, value: phone }),
+            email: EditableRow({ title: Email, name: 'email', value: email }),
+            login: EditableRow({ title: UserName, name: 'login', value: login }),
+            firstName: EditableRow({ title: FirstName, name: 'first_name', value: firstName }),
+            secondName: EditableRow({ title: SecondName, name: 'second_name', value: secondName }),
+            displayName: EditableRow({ title: DisplayName, name: 'display_name', value: displayName }),
+            phone: EditableRow({ title: Phone, name: 'phone', value: phone }),
             save: Button({ text: Save })
         });
 };
