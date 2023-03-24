@@ -3,5 +3,9 @@ import Handlebars from 'handlebars';
 import button from 'bundle-text:./button.hbs';
 import './button.pcss';
 
-export const Button = ({ text }) =>
+interface ButtonProps {
+    text: string;
+}
+
+export const Button = ({ text }: ButtonProps) =>
     Handlebars.compile(button)({ text });

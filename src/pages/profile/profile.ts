@@ -1,16 +1,16 @@
 import Handlebars from 'handlebars';
 
-import { Link } from '/src/components/Link/link';
+import { Link } from '../../components/Link/link';
 import { Row } from './components/Row/row';
 import { RowWithLink } from './components/RowWithLink/rowWithLink';
 import {
-    Email,
-    UserName,
-    FirstName,
-    SecondName,
-    Phone,
-    DisplayName
-} from '/src/constants';
+    EMAIL,
+    USER_NAME,
+    FIRST_NAME,
+    SECOND_NAME,
+    PHONE,
+    DISPLAY_NAME
+} from '../../constants';
 import back from '/static/back.svg';
 import avatar from '/static/avatar.svg';
 
@@ -35,12 +35,12 @@ export const Profile = () => {
             goBack: '/chats',
             avatar: avatar,
             name: displayName,
-            email: Row({ title: Email, value: email }),
-            login: Row({ title: UserName, value: login }),
-            firstName: Row({ title: FirstName, value: firstName }),
-            secondName: Row({ title: SecondName, value: secondName }),
-            displayName: Row({ title: DisplayName, value: displayName }),
-            phone: Row({ title: Phone, value: phone }),
+            email: Row({ title: EMAIL, value: email }),
+            login: Row({ title: USER_NAME, value: login }),
+            firstName: Row({ title: FIRST_NAME, value: firstName }),
+            secondName: Row({ title: SECOND_NAME, value: secondName }),
+            displayName: Row({ title: DISPLAY_NAME, value: displayName }),
+            phone: Row({ title: PHONE, value: phone }),
             editProfile: RowWithLink({ link: Link({ href: '/profileEdit', text: EditData })}),
             editPasswd: RowWithLink({ link: Link({ href: '/passwdEdit', text: EditPasswd })}),
             exit: RowWithLink({ link: Link({ href: '/signIn', text: Exit })})

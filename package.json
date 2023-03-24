@@ -22,6 +22,7 @@
     "postcss-easy-import": "^4.0.0",
     "postcss-for": "^2.1.1",
     "postcss-mixins": "^9.0.4",
-    "postcss-nested": "^6.0.1"
+    "postcss-nested": "^6.0.1",
+    "typescript": "^4.9.5"
   }
 }

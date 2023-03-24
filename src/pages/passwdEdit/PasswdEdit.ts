@@ -1,8 +1,8 @@
 import Handlebars from 'handlebars';
 
-import { Button } from '/src/components/Button/button';
-import { EditableRow } from '/src/components/EditableRow/editableRow';
-import { Save } from '/src/constants';
+import { Button } from '../../components/Button/button';
+import { EditableRow } from '../../components/EditableRow/editableRow';
+import { SAVE } from '../../constants';
 import back from '/static/back.svg';
 import avatar from '/static/avatar.svg';
 
@@ -42,6 +42,6 @@ export const PasswdEdit = () => {
                 name: 'newPasswordRetry',
                 value: newPasswdRetry
             }),
-            save: Button({ text: Save })
+            save: Button({ text: SAVE })
         });
 };

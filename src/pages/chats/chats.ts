@@ -4,5 +4,5 @@ import chats from 'bundle-text:./chats.hbs';
 import './chats.pcss';
 
 export const Chats = () => {
-    return Handlebars.compile(chats)();
+    return Handlebars.compile(chats)({ });
 };
