@@ -1,0 +1,10 @@
+# dependencies
+/node_modules
+
+# production
+/dist
+
+/.idea
+/.parcel-cache
+
+package-lock.json

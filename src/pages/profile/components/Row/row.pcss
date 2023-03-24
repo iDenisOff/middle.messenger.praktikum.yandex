@@ -1,0 +1,27 @@
+.row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    padding: 10px;
+
+    border-bottom: 1px solid #EAEAEA;
+
+    &__title, &__value {
+        font-size: 15px;
+        font-weight: 500;
+    }
+
+    &__title {
+        color: #1E1E1E;
+    }
+
+    &__value {
+        text-align: end;
+
+        color: #999999;
+    }
+}
+
+.row:last-child {
+    border-bottom: none;
+}

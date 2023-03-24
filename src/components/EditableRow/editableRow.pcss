@@ -1,0 +1,30 @@
+.editable-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    padding: 10px;
+
+    border-bottom: 1px solid #EAEAEA;
+
+    &__title, &__value {
+        font-size: 15px;
+        font-weight: 500;
+    }
+
+    &__title {
+        color: #1E1E1E;
+        display: flex;
+        align-items: center;
+    }
+
+    &__value {
+        text-align: end;
+        border: none;
+
+        color: #999999;
+    }
+}
+
+.editable-row:last-child {
+    border-bottom: none;
+}
