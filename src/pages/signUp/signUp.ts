@@ -1,8 +1,8 @@
 import Handlebars from 'handlebars';
 
-import { Button } from '../../components/Button/button';
-import { Input } from '../../components/Input/input';
-import { Link } from '../../components/Link/link';
+import { Button } from '@src/components/Button/button';
+import { Input } from '@src/components/Input/input';
+import { Link } from '@src/components/Link/link';
 import {
     EMAIL,
     USER_NAME,
@@ -14,7 +14,7 @@ import {
     REGISTRATION,
     REGISTER,
     ENTER
-} from '../../constants';
+} from '@src/constants';
 
 import signUp from 'bundle-text:./signUp.hbs';
 import './signUp.pcss';

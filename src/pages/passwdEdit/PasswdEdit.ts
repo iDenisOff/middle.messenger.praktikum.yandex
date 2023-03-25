@@ -1,10 +1,10 @@
 import Handlebars from 'handlebars';
 
-import { Button } from '../../components/Button/button';
-import { EditableRow } from '../../components/EditableRow/editableRow';
-import { SAVE } from '../../constants';
-import back from '/static/back.svg';
-import avatar from '/static/avatar.svg';
+import { Button } from '@src/components/Button/button';
+import { EditableRow } from '@src/components/EditableRow/editableRow';
+import { SAVE } from '@src/constants';
+import back from '@static/back.svg';
+import avatar from '@static/avatar.svg';
 
 import passwdEdit from 'bundle-text:./passwdEdit.hbs';
 import './PasswdEdit.pcss';

@@ -1,6 +1,7 @@
 import Handlebars from 'handlebars';
 
-import { Link } from '../../components/Link/link';
+import profile from 'bundle-text:./profile.hbs';
+import { Link } from '@src/components/Link/link';
 import { Row } from './components/Row/row';
 import { RowWithLink } from './components/RowWithLink/rowWithLink';
 import {
@@ -10,11 +11,10 @@ import {
     SECOND_NAME,
     PHONE,
     DISPLAY_NAME
-} from '../../constants';
-import back from '/static/back.svg';
-import avatar from '/static/avatar.svg';
+} from '@src/constants';
+import back from '@static/back.svg';
+import avatar from '@static/avatar.svg';
 
-import profile from 'bundle-text:./profile.hbs';
 import './profile.pcss';
 
 const EditData = 'Изменить данные';
@@ -23,7 +23,7 @@ const Exit = 'Выйти';
 
 export const Profile = () => {
     let email = 'pochta@yandex.ru';
-    let login = 'ivanivanov';
+    let login = 'ivanIvanov';
     let firstName = 'Иван';
     let secondName = 'Иванов';
     let displayName = 'Ваня';
@@ -31,9 +31,9 @@ export const Profile = () => {
 
     return Handlebars
         .compile(profile)({
-            back: back,
+            back,
             goBack: '/chats',
-            avatar: avatar,
+            avatar,
             name: displayName,
             email: Row({ title: EMAIL, value: email }),
             login: Row({ title: USER_NAME, value: login }),
@@ -41,8 +41,8 @@ export const Profile = () => {
             secondName: Row({ title: SECOND_NAME, value: secondName }),
             displayName: Row({ title: DISPLAY_NAME, value: displayName }),
             phone: Row({ title: PHONE, value: phone }),
-            editProfile: RowWithLink({ link: Link({ href: '/profileEdit', text: EditData })}),
-            editPasswd: RowWithLink({ link: Link({ href: '/passwdEdit', text: EditPasswd })}),
-            exit: RowWithLink({ link: Link({ href: '/signIn', text: Exit })})
+            editProfile: RowWithLink({ link: Link({ href: '/profileEdit', text: EditData }) }),
+            editPasswd: RowWithLink({ link: Link({ href: '/passwdEdit', text: EditPasswd }) }),
+            exit: RowWithLink({ link: Link({ href: '/signIn', text: Exit }) })
         });
 };

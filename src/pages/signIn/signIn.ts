@@ -1,15 +1,15 @@
 import Handlebars from 'handlebars';
 
-import { Button } from '../../components/Button/button';
-import { Input } from '../../components/Input/input';
-import { Link } from '../../components/Link/link';
+import { Button } from '@src/components/Button/button';
+import { Input } from '@src/components/Input/input';
+import { Link } from '@src/components/Link/link';
 import {
     LOG_IN,
     USER_NAME,
     PASSWD,
     ENTER,
     REGISTER
-} from '../../constants';
+} from '@src/constants';
 
 import signIn from 'bundle-text:./signIn.hbs';
 import './signIn.pcss';

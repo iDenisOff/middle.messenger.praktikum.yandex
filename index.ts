@@ -1,10 +1,10 @@
-import { SignIn } from './src/pages/signIn/signIn';
-import { SignUp } from './src/pages/signUp/signUp';
-import { Chats } from './src/pages/chats/chats';
-import { Error } from './src/pages/error/error';
-import { Profile } from './src/pages/profile/profile';
-import { ProfileEdit } from './src/pages/profileEdit/profileEdit';
-import { PasswdEdit } from './src/pages/passwdEdit/PasswdEdit';
+import { SignIn } from '@src/pages/signIn/signIn';
+import { SignUp } from '@src/pages/signUp/signUp';
+import { Chats } from '@src/pages/chats/chats';
+import { Error as UIError } from '@src/pages/error/error';
+import { Profile } from '@src/pages/profile/profile';
+import { ProfileEdit } from '@src/pages/profileEdit/profileEdit';
+import { PasswdEdit } from '@src/pages/passwdEdit/PasswdEdit';
 
 window.addEventListener('load', () => {
     const page = window.location.pathname;
@@ -33,7 +33,7 @@ window.addEventListener('load', () => {
                     return PasswdEdit();
                 }
                 default: {
-                    return Error({ code: 404, text: 'Не туда попали' });
+                    return UIError({ code: 404, text: 'Не туда попали' });
                 }
             }
         }());

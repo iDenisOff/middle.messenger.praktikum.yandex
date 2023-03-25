@@ -1,9 +1,9 @@
 import Handlebars from 'handlebars';
 
-import { Link } from '../../components/Link/link';
+import { Link } from '@src/components/Link/link';
 import {
     GO_BACK
-} from '../../constants';
+} from '@src/constants';
 
 import error from 'bundle-text:./error.hbs';
 import './error.pcss';

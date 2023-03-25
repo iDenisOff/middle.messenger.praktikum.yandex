@@ -12,6 +12,11 @@
     "sourceMap": true,
     "strictNullChecks": true,
     "outDir": "dist",
-    "declaration": false
+    "declaration": false,
+    "baseUrl": ".",
+    "paths": {
+      "@static/*": ["static/*"],
+      "@src/*": ["src/*"]
+    }
   }
 }

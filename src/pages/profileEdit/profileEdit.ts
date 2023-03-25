@@ -1,7 +1,7 @@
 import Handlebars from 'handlebars';
 
-import { Button } from '../../components/Button/button';
-import { EditableRow } from '../../components/EditableRow/editableRow';
+import { Button } from '@src/components/Button/button';
+import { EditableRow } from '@src/components/EditableRow/editableRow';
 import {
     EMAIL,
     USER_NAME,
@@ -10,9 +10,9 @@ import {
     PHONE,
     DISPLAY_NAME,
     SAVE
-} from '../../constants';
-import back from '../../../static/back.svg';
-import avatar from '../../../static/avatar.svg';
+} from '@src/constants';
+import back from '@static/back.svg';
+import avatar from '@static/avatar.svg';
 
 import profileEdit from 'bundle-text:./profileEdit.hbs';
 import './profileEdit.pcss';
