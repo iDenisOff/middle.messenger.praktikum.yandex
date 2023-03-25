@@ -1,7 +1,7 @@
 import { SignIn } from '@src/pages/signIn/signIn';
 import { SignUp } from '@src/pages/signUp/signUp';
 import { Chats } from '@src/pages/chats/chats';
-import { Error as UIError } from '@src/pages/error/error';
+import { UIError } from '@src/pages/error/error';
 import { Profile } from '@src/pages/profile/profile';
 import { ProfileEdit } from '@src/pages/profileEdit/profileEdit';
 import { PasswdEdit } from '@src/pages/passwdEdit/PasswdEdit';

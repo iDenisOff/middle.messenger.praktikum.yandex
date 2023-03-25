@@ -19,7 +19,7 @@ import './profileEdit.pcss';
 
 export const ProfileEdit = () => {
     let email = 'pochta@yandex.ru';
-    let login = 'ivanivanov';
+    let login = 'ivanIvanov';
     let firstName = 'Иван';
     let secondName = 'Иванов';
     let displayName = 'Ваня';

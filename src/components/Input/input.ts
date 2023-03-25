@@ -11,5 +11,5 @@ interface InputProps {
     error?: string;
 }
 
-export const Input = ({label, type = 'text', name, value, error }: InputProps) =>
+export const Input = ({ label, type = 'text', name, value, error }: InputProps) =>
     Handlebars.compile(input)({ label, type, name, value, error });

@@ -13,5 +13,5 @@ interface ErrorProps {
     text: string;
 }
 
-export const Error = ({ code, text }: ErrorProps) =>
-    Handlebars.compile(error)({ code, text, link: Link({ href: '/chats', text: GO_BACK })});
+export const UIError = ({ code, text }: ErrorProps) =>
+    Handlebars.compile(error)({ code, text, link: Link({ href: '/chats', text: GO_BACK }) });

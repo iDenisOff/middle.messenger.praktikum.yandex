@@ -56,6 +56,6 @@ export const SignUp = () => {
             password: inputPassword,
             passwordRetry: inputPasswordRetry,
             signUp: Button({ text: REGISTER }),
-            link: Link({ href: '/signIn', text: ENTER }),
+            link: Link({ href: '/signIn', text: ENTER })
         });
 };
