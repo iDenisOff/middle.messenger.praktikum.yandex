@@ -1,0 +1,34 @@
+.header {
+    display: grid;
+    grid-template-columns: min-content auto min-content;
+    column-gap: 10px;
+    padding: 10px 20px;
+    border-bottom: 1px solid #eaeaea;
+
+    &_avatar {
+        height: 34px;
+        width: 34px;
+        background-color: #efefef;
+        border-radius: 17px;
+    }
+
+    &_name {
+        margin: auto 0;
+        font-size: 14px;
+        color: #1e1e1e;
+        font-weight: 600;
+    }
+
+    &_menu {
+        display: grid;
+        padding: 10px;
+    }
+
+    &_menu:hover {
+        cursor: pointer;
+    }
+
+    &_menu img {
+        margin: auto 0;
+    }
+}

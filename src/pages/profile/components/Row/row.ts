@@ -1,6 +1,7 @@
 import Handlebars from 'handlebars';
 
 import row from 'bundle-text:./row.hbs';
+
 import './row.pcss';
 
 interface RowProps {

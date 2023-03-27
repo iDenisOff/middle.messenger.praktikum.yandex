@@ -1,6 +1,7 @@
 import Handlebars from 'handlebars';
 
 import input from 'bundle-text:./input.hbs';
+
 import './input.pcss';
 
 interface InputProps {

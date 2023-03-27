@@ -12,3 +12,4 @@ export const PHONE = 'Телефон';
 export const GO_BACK = 'Назад к чатам';
 export const SAVE = 'Сохранить';
 export const DISPLAY_NAME = 'Имя в чате';
+export const PROFILE = 'Профиль';

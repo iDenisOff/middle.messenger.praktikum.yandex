@@ -1,3 +1,20 @@
 <main class="chats">
-    <span>Страница чатов, перейти в <a href="/profile">профиль</a></span>
+    <div class="chats__list">
+        <div class="chats__list_link">
+            {{{profileLink}}}
+        </div>
+        <div class="chats__list_search">
+            {{{search}}}
+        </div>
+        <div class="chats__list_tabs">
+            {{#each tabs}}
+                {{{this}}}
+            {{/each}}
+        </div>
+    </div>
+    <div class="chats__chat">
+        {{{header}}}
+        {{{content}}}
+        {{{footer}}}
+    </div>
 </main>
