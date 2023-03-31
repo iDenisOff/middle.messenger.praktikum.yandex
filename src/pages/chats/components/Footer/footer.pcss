@@ -26,12 +26,28 @@
         padding: 10px 20px;
     }
 
+    &_message-error {
+        border: 1px solid #ff2f2f;
+    }
+
     &_send {
         display: grid;
     }
 
     &_send:hover {
         cursor: pointer;
+    }
+
+    &_send button {
+        border: none;
+        cursor: pointer;
+        appearance: none;
+        background-color: inherit;
+    }
+
+    &_send button:active {
+        transition: none;
+        transform:scale(.90);
     }
 
     &_send img {

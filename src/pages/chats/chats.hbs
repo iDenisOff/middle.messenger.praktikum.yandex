@@ -1,20 +1,16 @@
-<main class="chats">
-    <div class="chats__list">
-        <div class="chats__list_link">
-            {{{profileLink}}}
-        </div>
-        <div class="chats__list_search">
-            {{{search}}}
-        </div>
-        <div class="chats__list_tabs">
-            {{#each tabs}}
-                {{{this}}}
-            {{/each}}
-        </div>
+<div class="chats__list">
+    <div class="chats__list_link">
+        {{{profileLink}}}
     </div>
-    <div class="chats__chat">
-        {{{header}}}
-        {{{content}}}
-        {{{footer}}}
+    <div class="chats__list_search">
+        {{{search}}}
     </div>
-</main>
+    <div class="chats__list_tabs">
+        {{{tab}}}
+    </div>
+</div>
+<div class="chats__chat">
+    {{{header}}}
+    {{{content}}}
+    {{{footer}}}
+</div>

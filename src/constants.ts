@@ -13,3 +13,12 @@ export const GO_BACK = 'Назад к чатам';
 export const SAVE = 'Сохранить';
 export const DISPLAY_NAME = 'Имя в чате';
 export const PROFILE = 'Профиль';
+
+export enum TypesChecked {
+    LOGIN = 'login',
+    PASSWORD = 'password',
+    NAME = 'name',
+    MAIL = 'email',
+    TELEPHONE = 'telephone',
+    MESSAGE = 'message'
+}

@@ -1,41 +1,42 @@
-import { SignIn } from '@src/pages/signIn/signIn';
-import { SignUp } from '@src/pages/signUp/signUp';
-import { Chats } from '@src/pages/chats/chats';
-import { UIError } from '@src/pages/error/error';
-import { Profile } from '@src/pages/profile/profile';
-import { ProfileEdit } from '@src/pages/profileEdit/profileEdit';
-import { PasswdEdit } from '@src/pages/passwdEdit/PasswdEdit';
+import { SignIn } from '@src/pages/signIn';
+import { SignUp } from '@src/pages/signUp';
+import { Chats } from '@src/pages/chats';
+import { Profile } from '@src/pages/profile';
+import { ProfileEdit } from '@src/pages/profileEdit';
+import { PasswdEdit } from '@src/pages/passwdEdit';
+import { UIError } from '@src/pages/error';
 
-window.addEventListener('load', () => {
-    const page = window.location.pathname;
-    const root = document.getElementById('root');
+window.addEventListener('DOMContentLoaded', () => {
+    const path = window.location.pathname;
+    const root = document.querySelector('#root')!;
 
-    if (root) {
-        root.innerHTML = (function () {
-            switch (page) {
-                case '/':
-                case '/signIn': {
-                    return SignIn();
-                }
-                case '/signUp': {
-                    return SignUp();
-                }
-                case '/chats': {
-                    return Chats();
-                }
-                case '/profile': {
-                    return Profile();
-                }
-                case '/profileEdit': {
-                    return ProfileEdit();
-                }
-                case '/passwdEdit': {
-                    return PasswdEdit();
-                }
-                default: {
-                    return UIError({ code: 404, text: 'Не туда попали' });
-                }
+    const page = (function () {
+        switch (path) {
+            case '/':
+            case '/signIn': {
+                return new SignIn();
             }
-        }());
-    }
+            case '/signUp': {
+                return new SignUp();
+            }
+            case '/chats': {
+                return new Chats();
+            }
+            case '/profile': {
+                return new Profile();
+            }
+            case '/profileEdit': {
+                return new ProfileEdit();
+            }
+            case '/passwdEdit': {
+                return new PasswdEdit();
+            }
+            default: {
+                return new UIError({ code: 404, text: 'Не туда попали' });
+            }
+        }
+    }());
+
+    root.appendChild(page.getContent());
+    page.dispatchComponentDidMount();
 });
