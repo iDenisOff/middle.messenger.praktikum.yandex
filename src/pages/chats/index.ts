@@ -17,7 +17,7 @@ export class Chats extends Block {
     }
 
     init() {
-        let searchValue = '';
+        const searchValue = '';
 
         this.element.classList.add('chats');
         this.children.profileLink = new ProfileLink({ href: '/profile', label: PROFILE });

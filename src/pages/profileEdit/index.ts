@@ -37,12 +37,12 @@ export class ProfileEdit extends Block {
     }
 
     init() {
-        let email = 'pochta@yandex.ru';
-        let login = 'ivanIvanov';
-        let firstName = 'Иван';
-        let secondName = 'Иванов';
-        let displayName = 'Ваня';
-        let phone = '+79099673030';
+        const email = 'pochta@yandex.ru';
+        const login = 'ivanIvanov';
+        const firstName = 'Иван';
+        const secondName = 'Иванов';
+        const displayName = 'Ваня';
+        const phone = '+79099673030';
 
         this.element.classList.add('profile-edit');
         this.children.email = new EditableRow({ title: EMAIL, name: 'email', value: email, valueType: TypesChecked.MAIL });

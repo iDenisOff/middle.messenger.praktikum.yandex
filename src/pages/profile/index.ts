@@ -32,12 +32,12 @@ export class Profile extends Block {
     }
 
     init() {
-        let email = 'pochta@yandex.ru';
-        let login = 'ivanIvanov';
-        let firstName = 'Иван';
-        let secondName = 'Иванов';
-        let displayName = 'Ваня';
-        let phone = '+7 (909) 967 30 30';
+        const email = 'pochta@yandex.ru';
+        const login = 'ivanIvanov';
+        const firstName = 'Иван';
+        const secondName = 'Иванов';
+        const displayName = 'Ваня';
+        const phone = '+7 (909) 967 30 30';
 
         this.element.classList.add('profile');
         this.children.email = new Row({ title: EMAIL, value: email });
