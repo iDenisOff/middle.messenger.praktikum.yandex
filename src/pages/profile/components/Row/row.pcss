@@ -1,8 +1,10 @@
+@import url('../../../../../styles.pcss');
+
 .row {
     display: grid;
     grid-template-columns: 1fr 1fr;
     padding: 10px;
-    border-bottom: 1px solid #eaeaea;
+    border-bottom: 1px solid $color-grey-light;
 
     &__title, &__value {
         font-size: 15px;
@@ -10,12 +12,12 @@
     }
 
     &__title {
-        color: #1e1e1e;
+        color: $color-black-light;
     }
 
     &__value {
         text-align: end;
-        color: #999;
+        color: $color-grey-primary;
     }
 }
 

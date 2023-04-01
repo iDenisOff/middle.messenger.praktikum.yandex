@@ -1,21 +1,23 @@
+@import url('../../../../../styles.pcss');
+
 .header {
     display: grid;
     grid-template-columns: min-content auto min-content;
     column-gap: 10px;
     padding: 10px 20px;
-    border-bottom: 1px solid #eaeaea;
+    border-bottom: 1px solid $color-grey-light;
 
     &_avatar {
         height: 34px;
         width: 34px;
-        background-color: #efefef;
+        background-color: $color-white-dark;
         border-radius: 17px;
     }
 
     &_name {
         margin: auto 0;
         font-size: 14px;
-        color: #1e1e1e;
+        color: $color-black-light;
         font-weight: 600;
     }
 

@@ -1,8 +1,10 @@
+@import url('../../../styles.pcss');
+
 .editable-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
     padding: 10px;
-    border-bottom: 1px solid #eaeaea;
+    border-bottom: 1px solid $color-grey-light;
 
     &__title, &__value {
         font-size: 15px;
@@ -10,19 +12,19 @@
     }
 
     &__title {
-        color: #1e1e1e;
+        color: $color-black-light;
         display: flex;
         align-items: center;
     }
 
     &__title-error {
-        color: #ff2f2f;
+        color: $color-red-primary;
     }
 
     &__value {
         text-align: end;
         border: none;
-        color: #999;
+        color: $color-grey-primary;
     }
 }
 
