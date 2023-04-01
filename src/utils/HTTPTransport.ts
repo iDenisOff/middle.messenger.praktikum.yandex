@@ -21,26 +21,28 @@ function queryStringify(data: XMLHttpRequestBodyInit): string {
     return Object.entries(data).map(([key, val]) => `${key}=${val}`).join('&');
 }
 
+type HTTPMethod = (url: string, options?: Options) => Promise<unknown>;
+
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 class HTTPTransport {
-    get = (url: string, options: Options = {}) => {
+    get: HTTPMethod = (url, options = {}) => {
         if (options.data) {
             url += '?' + queryStringify(options.data);
         }
 
-        return this.request(url, { ...options, method: METHOD.GET }, options.timeout);
+        return this.request(url, { ...options, method: METHOD.GET }, options?.timeout);
     };
 
-    post = (url: string, options: Options) => {
-        return this.request(url, { ...options, method: METHOD.POST }, options.timeout);
+    post: HTTPMethod = (url, options) => {
+        return this.request(url, { ...options, method: METHOD.POST }, options?.timeout);
     };
 
-    put = (url: string, options: Options) => {
-        return this.request(url, { ...options, method: METHOD.PUT }, options.timeout);
+    put: HTTPMethod = (url: string, options) => {
+        return this.request(url, { ...options, method: METHOD.PUT }, options?.timeout);
     };
 
-    delete = (url: string, options: Options) => {
-        return this.request(url, { ...options, method: METHOD.DELETE }, options.timeout);
+    delete: HTTPMethod = (url, options) => {
+        return this.request(url, { ...options, method: METHOD.DELETE }, options?.timeout);
     };
 
     request = (url: string, options: RequestOptions, timeout: number = 5000) => {
