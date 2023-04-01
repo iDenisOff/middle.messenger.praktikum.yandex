@@ -25,11 +25,15 @@ export class EditableRow extends Block<EditableRowProps> {
             const value = (event.target as HTMLInputElement).value;
             const isValid = validateValue(this.props.valueType!, value);
 
+/*
             if (isValid) {
                 (this.element.getElementsByClassName('editable-row__title')[0] as HTMLDivElement).classList.remove('editable-row__title-error');
             } else {
                 (this.element.getElementsByClassName('editable-row__title')[0] as HTMLDivElement).classList.add('editable-row__title-error');
             }
+*/
+            (this.element.getElementsByClassName('editable-row__error')[0] as HTMLDivElement).innerText =
+                isValid ? '' : 'Некорректное значение';
         };
 
         if (this.props.valueType) {
