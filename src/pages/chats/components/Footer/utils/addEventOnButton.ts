@@ -1,13 +1,19 @@
-export const addEventOnButton = (buttonSend: HTMLButtonElement, messageInput: HTMLInputElement): void => {
-    buttonSend.addEventListener('click', () => {
-        let values: Record<string, string> = {};
+import { ButtonWithImg } from '../components/ButtonWithImg';
 
-        messageInput.dispatchEvent(new Event('blur'));
+export const addEventOnButton = (buttonSend: ButtonWithImg, messageInput: HTMLInputElement): void => {
+    buttonSend.setProps({
+        events: {
+            click: () => {
+                let values: Record<string, string> = {};
 
-        if (messageInput.value.length !== 0) {
-            values.message = messageInput.value;
+                messageInput.dispatchEvent(new Event('blur'));
+
+                if (messageInput.value.length !== 0) {
+                    values.message = messageInput.value;
+                }
+
+                console.log(values);
+            }
         }
-
-        console.log(values);
     });
 };

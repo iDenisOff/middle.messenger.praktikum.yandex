@@ -1,36 +1,46 @@
 import { Block } from '@src/utils/Block';
 import { addEventOnInput } from './utils/addEventOnInput';
 import { addEventOnButton } from './utils/addEventOnButton';
+import { MessageInput } from './components/MessageInput';
+import { ButtonWithImg } from './components/ButtonWithImg';
 import pin from '@static/pin.svg';
-import send from '@static/send.svg';
 
 import template from 'bundle-text:./footer.hbs';
 import './footer.pcss';
 
+interface FooterProps {
+    events?: {
+        submit: (event: Event) => void;
+    };
+}
+
 export class Footer extends Block {
-    constructor() {
-        super('form', {});
+    constructor(props: FooterProps) {
+        super('form', { props });
     }
 
     componentDidMount(): void {
-        this.element.addEventListener('submit', event => {
-            event.preventDefault();
+        this.setProps({
+            events: {
+                submit: (event: Event) => event.preventDefault()
+            }
         });
 
-        const messageInput = this.element.getElementsByClassName('footer_message')[0] as HTMLInputElement;
-
-        addEventOnInput(messageInput);
-
-        const buttonSend = this.element.getElementsByTagName('button')[0] as HTMLButtonElement;
-
-        addEventOnButton(buttonSend, messageInput);
+        addEventOnInput(this.children.message as MessageInput);
+        addEventOnButton(
+            this.children.button as ButtonWithImg,
+            this.children.message.element as HTMLInputElement
+        );
     }
 
     init() {
         this.element.classList.add('footer');
+
+        this.children.button = new ButtonWithImg({});
+        this.children.message = new MessageInput({});
     }
 
     render() {
-        return this.compile(template, { ...this.props, pin, send });
+        return this.compile(template, { ...this.props, pin });
     }
 }

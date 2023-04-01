@@ -24,7 +24,7 @@ export class Chats extends Block {
         this.children.search = new Search({ value: searchValue });
         this.children.header = new Header({ name: 'Вадим' });
         this.children.content = new Content();
-        this.children.footer = new Footer();
+        this.children.footer = new Footer({});
         this.children.tab = new Tab({
             name: 'Андрей',
             text: 'Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то момент попросила',

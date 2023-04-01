@@ -1,22 +1,23 @@
 import { Block } from '@src/utils/Block';
-import { validateValue } from '@src/utils/validateValues';
 import { TypesChecked } from '@src/constants';
+import { validateValue } from '@src/utils/validateValues';
 import { Input } from '@src/components/Input';
 
-import template from 'bundle-text:./editableRow.hbs';
-import './editableRow.pcss';
+import template from 'bundle-text:./formInput.hbs';
+import './formInput.pcss';
 
-interface EditableRowProps {
-    title: string;
-    type?: 'text' | 'password';
+interface FormInputProps {
+    label: string;
+    type?: 'text' | 'password' | 'email' | 'tel';
     name: string;
     valueType?: TypesChecked;
     value?: string;
+    error?: string;
 }
 
-export class EditableRow extends Block<EditableRowProps> {
-    constructor(props: EditableRowProps) {
-        super('div', { ...props, type: props.type ?? 'text' });
+export class FormInput extends Block<FormInputProps> {
+    constructor(props: FormInputProps) {
+        super('div', props);
     }
 
     componentDidMount(): void {
@@ -24,8 +25,8 @@ export class EditableRow extends Block<EditableRowProps> {
             const value = (event.target as HTMLInputElement).value;
             const isValid = validateValue(this.props.valueType!, value);
 
-            (this.element.getElementsByClassName('editable-row__error')[0] as HTMLDivElement).innerText =
-                isValid ? '' : 'Некорректное значение';
+            (this.element.getElementsByClassName('form-input__error')[0] as HTMLDivElement).innerText =
+            isValid ? '' : 'Некорректное значение';
         };
 
         if (this.props.valueType) {
@@ -39,7 +40,7 @@ export class EditableRow extends Block<EditableRowProps> {
     }
 
     init() {
-        this.element.classList.add('editable-row');
+        this.element.classList.add('form-input');
 
         this.children.input = new Input({
             type: this.props.type,
