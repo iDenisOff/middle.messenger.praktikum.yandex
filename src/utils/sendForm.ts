@@ -1,6 +1,4 @@
 import { Block } from '@src/utils/Block';
-import { getInput } from '@src/components/FormInput/utils/getInput';
-import { FormInput } from '@src/components/FormInput';
 
 export const sendForm = (children:  Record<string, Block<any>>): void => {
     let values: Record<string, string> = {};
@@ -10,7 +8,7 @@ export const sendForm = (children:  Record<string, Block<any>>): void => {
             return;
         }
 
-        const input = getInput(el as FormInput);
+        const input = el.children.input.element as HTMLInputElement;
         input.dispatchEvent(new Event('blur'));
 
         if (input.value.length !== 0) {
