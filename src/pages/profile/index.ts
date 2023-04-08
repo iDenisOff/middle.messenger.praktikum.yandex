@@ -26,7 +26,7 @@ export class Profile extends Block {
         super('main', {});
 
         this.props.back = back;
-        this.props.goBack = '/chats';
+        this.props.goBack = '/messenger';
         this.props.avatar = avatar;
         this.props.name = 'Ваня';
     }
@@ -47,13 +47,13 @@ export class Profile extends Block {
         this.children.displayName = new Row({ title: DISPLAY_NAME, value: displayName });
         this.children.phone = new Row({ title: PHONE, value: phone });
         this.children.editProfile = new RowWithLink({
-            link: new Link({ href: '/profileEdit', text: EditData })
+            link: new Link({ href: '/settings', text: EditData })
         });
         this.children.editPasswd = new RowWithLink({
-            link: new Link({ href: '/passwdEdit', text: EditPasswd })
+            link: new Link({ href: '/passwd-edit', text: EditPasswd })
         });
         this.children.exit = new RowWithLink({
-            link: new Link({ href: '/signIn', text: Exit })
+            link: new Link({ href: '/', text: Exit })
         });
     }
 

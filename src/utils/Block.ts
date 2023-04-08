@@ -214,4 +214,12 @@ export class Block<P extends Record<string, any> = any> {
     _createDocumentElement(tagName: string) {
         return document.createElement(tagName);
     }
+
+    public show() {
+        this.getContent().style.display = 'block';
+    }
+
+    public hide() {
+        this.getContent().style.display = 'none';
+    }
 }

@@ -58,7 +58,7 @@ export class Form extends Block {
             }
         });
         this.children.link = new Link({
-            href: '/signIn',
+            href: '/',
             text: ENTER
         });
     }

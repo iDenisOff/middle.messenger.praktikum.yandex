@@ -7,19 +7,18 @@ import {
 import template from 'bundle-text:./error.hbs';
 import './error.pcss';
 
-interface ErrorProps {
-    code: number;
-    text: string;
-}
+export class UIError extends Block {
+    constructor() {
+        super('main', {});
 
-export class UIError extends Block<ErrorProps> {
-    constructor(props: ErrorProps) {
-        super('main', props);
+        this.props.code = 404;
+        this.props.text = 'Страница не найдена';
+
     }
 
     init() {
         this.element.classList.add('server-error');
-        this.children.link = new Link({ href: '/chats', text: GO_BACK });
+        this.children.link = new Link({ href: '/messenger', text: GO_BACK });
     }
 
     render() {

@@ -50,7 +50,7 @@ export class Form extends Block {
             }
         });
         this.children.link = new Link({
-            href: '/signUp',
+            href: '/sign-up',
             text: REGISTER
         });
     }
