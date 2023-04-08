@@ -1,0 +1,17 @@
+{
+  "extends": ["airbnb-typescript", "plugin:import/typescript"],
+  "plugins": ["@typescript-eslint"],
+  "rules": {
+    "@typescript-eslint/indent": ["error", 4],
+    "@typescript-eslint/comma-dangle": ["error", "never"],
+    "indent": "off",
+    "comma-dangle": ["error", "never"],
+    "import/extensions": "off",
+    "react/jsx-filename-extension": "off",
+    "import/no-extraneous-dependencies": "off"
+  },
+  "parserOptions": {
+    "parser": "@typescript-eslint/parser",
+    "project": ["./tsconfig.json"]
+  }
+}

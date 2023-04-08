@@ -1,7 +1,34 @@
+@import url('../../../styles.pcss');
+
 .chats {
     min-height: 100vh;
+    display: grid;
+    grid-template-columns: 310px auto;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    &__list {
+        background-color: $color-white-primary;
+
+        &_link {
+            margin: 10px;
+            display: flex;
+            flex-direction: row-reverse;
+        }
+
+        &_search {
+            padding: 14px 10px;
+            border-bottom: 1px solid $color-grey-light;
+            display: flex;
+            flex-direction: row;
+        }
+
+        &_tabs {
+            overflow-y: auto;
+            height: 680px;
+        }
+    }
+
+    &__chat {
+        display: grid;
+        grid-template-rows: min-content auto min-content;
+    }
 }

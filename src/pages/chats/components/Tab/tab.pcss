@@ -1,0 +1,74 @@
+@import url('../../../../../styles.pcss');
+
+.tab {
+    padding: 12px;
+    display: grid;
+    grid-template-columns: min-content auto;
+    column-gap: 10px;
+    border-bottom: 1px solid $color-grey-light;
+    max-height: 70px;
+    cursor: pointer;
+
+    &_avatar {
+        height: 47px;
+        width: 47px;
+        background-color: $color-white-dark;
+        border-radius: 23px;
+    }
+
+    &__content {
+        display: grid;
+        grid-template-rows: min-content auto;
+
+        &__up {
+            display: grid;
+            grid-template-columns: auto min-content;
+            column-gap: 4px;
+
+            &_name {
+                color: $color-black-light;
+                font-weight: 600;
+                font-size: 13px;
+            }
+
+            &_time {
+                color: $color-grey-primary;
+                font-size: 11px;
+                text-align: center;
+            }
+        }
+
+        &__down {
+            display: grid;
+            grid-template-columns: auto min-content;
+            column-gap: 4px;
+            height: 100%;
+
+            &_text {
+                margin: auto 0;
+                color: $color-grey-primary;
+                font-size: 12px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+
+            &_count {
+                margin: auto;
+                display: flex;
+                height: 20px;
+                width: 20px;
+                font-size: 11px;
+                border-radius: 10px;
+                background-color: $color-blue-primary;
+                color: $color-white;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    }
+}
+
+.tab:hover {
+    background-color: $color-blue-light;
+}

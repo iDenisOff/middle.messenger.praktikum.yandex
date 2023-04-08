@@ -1,10 +1,10 @@
+@import url('../../../styles.pcss');
+
 .editable-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
-
     padding: 10px;
-
-    border-bottom: 1px solid #EAEAEA;
+    border-bottom: 1px solid $color-grey-light;
 
     &__title, &__value {
         font-size: 15px;
@@ -12,17 +12,23 @@
     }
 
     &__title {
-        color: #1E1E1E;
+        color: $color-black-light;
         display: flex;
         align-items: center;
     }
 
-    &__value {
-        text-align: end;
-        border: none;
-
-        color: #999999;
+    &__error {
+        font-size: 10px;
+        color: $color-red-primary;
+        text-align: right;
+        grid-column-start: 2;
     }
+}
+
+.editable-row input {
+    text-align: end;
+    border: none;
+    color: $color-grey-primary;
 }
 
 .editable-row:last-child {

@@ -1,13 +1,13 @@
+@import url('../../../styles.pcss');
+
 .profile {
     min-height: 100vh;
-
     display: grid;
     grid-template-columns: 64px auto;
 
     &__back {
         display: flex;
-
-        background-color: #FBFBFB;
+        background-color: $color-white-primary;
     }
 
     &__back img {
@@ -15,15 +15,13 @@
     }
 
     &__back:hover{
-        background-color: #edeaea;
-
+        background-color: $color-grey-light;
         cursor: pointer;
     }
 
     &__content {
         display: flex;
         justify-content: center;
-
         padding: 60px;
 
         &__container {
@@ -38,9 +36,8 @@
             }
 
             &_name {
-                margin: 20px 0 60px 0;
+                margin: 20px 0 60px;
                 text-align: center;
-
                 font-weight: 600;
                 font-size: 16px;
             }

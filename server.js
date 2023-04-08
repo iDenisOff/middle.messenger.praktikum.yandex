@@ -1,14 +1,14 @@
-const express = require('express');
+import express from 'express';
 
 const app = express();
 const PORT = 3000;
 
 app.use(express.static('dist'));
 
-app.get(/(.*?)/, function(req, res){
-    res.sendFile(__dirname + '/dist/index.html');
+app.get(/(.*?)/, (req, res) => {
+    res.sendFile(`${process.cwd()}/dist/index.html`);
 });
 
-app.listen(PORT, function () {
+app.listen(PORT, () => {
     console.log(`Example app listening on port ${PORT}!`);
 });
