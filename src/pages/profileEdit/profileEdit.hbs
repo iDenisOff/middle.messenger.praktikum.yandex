@@ -1,4 +1,8 @@
 {{{back}}}
 <div class="profile-edit__content">
-    {{{form}}}
+    {{#if isLoading}}
+            Loading...
+    {{else}}
+        {{{form}}}
+    {{/if}}
 </div>

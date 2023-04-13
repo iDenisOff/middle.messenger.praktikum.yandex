@@ -1,6 +1,7 @@
 import { Block } from '@src/utils/Block';
 import { BackButton } from '@src/components/BackButton';
 import router from '@src/utils/Router';
+import { withStore } from '@src/store/store';
 
 import { Form } from './components/Form';
 
@@ -26,3 +27,7 @@ export class ProfileEdit extends Block {
         return this.compile(template, this.props);
     }
 }
+
+const withUser = withStore((state) => ({ ...state.user }));
+
+export const ProfileEditPage = withUser(ProfileEdit);
