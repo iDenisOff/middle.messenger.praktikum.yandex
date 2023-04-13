@@ -5,7 +5,7 @@ import './row.pcss';
 
 interface RowProps {
     title: string;
-    value: string;
+    value?: string;
 }
 
 export class Row extends Block<RowProps> {

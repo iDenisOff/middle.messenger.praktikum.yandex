@@ -1,5 +1,8 @@
 import { Block } from '@src/utils/Block';
 import { Button } from '@src/components/Button';
+import userController from '@src/controllers/UserController';
+import { store, StoreEvents } from '@src/store/store';
+import { UserPassword } from '@src/api/UserAPI';
 import { EditableRow } from '@src/components/EditableRow';
 import { SAVE, TypesChecked } from '@src/constants';
 import { sendForm } from '@src/utils/sendForm';
@@ -16,7 +19,9 @@ export class Form extends Block {
     constructor() {
         super('form', {});
 
-        this.props.avatar = avatar;
+        store.on(StoreEvents.Updated, () => {
+            this.setProps(store.getState().user);
+        });
     }
 
     componentDidMount(): void {
@@ -30,18 +35,18 @@ export class Form extends Block {
     init() {
         this.element.classList.add('passwd-edit-form');
 
-        this.children.oldPasswd = new EditableRow({
+        this.children.oldPassword = new EditableRow({
             title: OldPasswd,
             type: 'password',
             name: 'oldPassword'
         });
-        this.children.newPasswd = new EditableRow({
+        this.children.newPassword = new EditableRow({
             title: NewPasswd,
             type: 'password',
             name: 'newPassword',
             valueType: TypesChecked.PASSWORD
         });
-        this.children.newPasswdRetry = new EditableRow({
+        this.children.newPasswordRetry = new EditableRow({
             title: NewPasswdRetry,
             type: 'password',
             name: 'newPasswordRetry'
@@ -49,12 +54,15 @@ export class Form extends Block {
         this.children.save = new Button({
             text: SAVE,
             events: {
-                click: () => sendForm(this.children)
+                click: () => {
+                    const data: UserPassword = sendForm(this.children);
+                    userController.changeUserPassword(data);
+                }
             }
         });
     }
 
     render() {
-        return this.compile(template, this.props);
+        return this.compile(template, { ...this.props, avatar: this.props.data?.avatar ?? avatar });
     }
 }

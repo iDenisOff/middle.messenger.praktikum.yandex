@@ -1,4 +1,7 @@
 import { Block } from '@src/utils/Block';
+import authController from '@src/controllers/AuthController';
+import router from '@src/utils/Router';
+import { SignupData } from '@src/api/AuthAPI';
 import { Button } from '@src/components/Button';
 import { FormInput } from '@src/components/FormInput';
 import { Link } from '@src/components/Link';
@@ -41,9 +44,9 @@ export class Form extends Block {
             new FormInput({ label: EMAIL, type: 'email', name: 'email', valueType: TypesChecked.MAIL });
         this.children.login =
             new FormInput({ label: USER_NAME, name: 'login', valueType: TypesChecked.LOGIN });
-        this.children.firstName =
+        this.children.first_name =
             new FormInput({ label: FIRST_NAME, name: 'first_name', valueType: TypesChecked.NAME });
-        this.children.secondName =
+        this.children.second_name =
             new FormInput({ label: SECOND_NAME, name: 'second_name', valueType: TypesChecked.NAME });
         this.children.phone =
             new FormInput({ label: PHONE, type: 'tel', name: 'phone', valueType: TypesChecked.TELEPHONE });
@@ -54,12 +57,23 @@ export class Form extends Block {
         this.children.signUp = new Button({
             text: REGISTER,
             events: {
-                click: () => sendForm(this.children)
+                click: () => {
+                    const data: SignupData = sendForm(this.children);
+                    authController.signUp(data);
+                }
             }
         });
         this.children.link = new Link({
             href: '/',
             text: ENTER
+        });
+        this.children.signIn = new Button({
+            text: ENTER,
+            className: 'transparent',
+            events: {
+                click: () => router.go('/')
+            }
+
         });
     }
 

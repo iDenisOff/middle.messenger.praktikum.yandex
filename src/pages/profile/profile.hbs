@@ -1,12 +1,13 @@
-<div class="profile__back" onclick="window.location.href='{{goBack}}'">
-    <img src={{back}} alt="back" />
-</div>
+{{{back}}}
 <div class="profile__content">
+    {{#if isLoading}}
+        Loading...
+    {{else}}
     <div class="profile__content__container">
         <div class="profile__content__container_avatar">
             <img src={{avatar}} alt="avatar" />
         </div>
-        <div class="profile__content__container_name">{{name}}</div>
+        <div class="profile__content__container_name">{{data.first_name}}</div>
         <div class="profile__content__container_data">
             {{{email}}}
             {{{login}}}
@@ -21,4 +22,5 @@
             {{{exit}}}
         </div>
     </div>
+    {{/if}}
 </div>

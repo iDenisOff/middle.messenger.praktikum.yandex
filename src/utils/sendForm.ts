@@ -1,7 +1,7 @@
 import { Block } from '@src/utils/Block';
 
-export const sendForm = (children:  Record<string, Block<any>>): void => {
-    let values: Record<string, string> = {};
+export function sendForm<T extends Record<string, any>>(children:  Record<string, Block<any>>): T {
+    let values: T = {};
 
     Object.entries(children).forEach(([name, el]) => {
         if (name === 'signUp' || name === 'signIn' || name === 'link' || name === 'save') {
@@ -16,5 +16,5 @@ export const sendForm = (children:  Record<string, Block<any>>): void => {
         }
     });
 
-    console.log(values);
-};
+    return values;
+}

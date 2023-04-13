@@ -1,5 +1,7 @@
 import { Block } from '@src/utils/Block';
 import back from '@static/back.svg';
+import { BackButton } from '@src/components/BackButton';
+import router from '@src/utils/Router';
 
 import { Form } from './components/Form';
 
@@ -16,7 +18,11 @@ export class PasswdEdit extends Block {
 
     init() {
         this.element.classList.add('passwd-edit');
-
+        this.children.back = new BackButton({
+            events: {
+                click: () => router.go('/profile')
+            }
+        });
         this.children.form = new Form();
     }
 

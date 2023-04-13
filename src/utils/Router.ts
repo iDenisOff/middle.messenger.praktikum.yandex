@@ -29,7 +29,8 @@ class Route {
     
     leave() {
         if (this._block) {
-            this._block.hide();
+            this._block = null;
+            //this._block.hide();
         }
     }
 
@@ -59,6 +60,10 @@ class Router {
     private _currentRoute: Route | null = null;
 
     private _history = window.history;
+
+    private _onRouteCallback: () => void = () => {};
+
+    private _unprotectedPaths: `/${string}`[] = [];
 
     constructor(private readonly _rootQuery: string) {
         if (Router.__instance) {
@@ -102,6 +107,20 @@ class Router {
         this._currentRoute = route;
 
         route.render();
+
+        if (!this._unprotectedPaths.includes(pathname as `/${string}`)) {
+            this._onRouteCallback();
+        }
+    }
+
+    public setUnprotectedPaths(paths: `/${string}`[]) {
+        this._unprotectedPaths = paths;
+        return this;
+    }
+
+    public onRoute(callback: () => void) {
+        this._onRouteCallback = callback;
+        return this;
     }
 
     public go(pathname: string) {

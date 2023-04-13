@@ -1,16 +1,19 @@
 @import url('../../../styles.pcss');
 
 .button {
-    width: 100%;
-    border-radius: 8px;
     border: none;
-    background-color: $color-blue-primary;
-    line-height: 37px;
-    color: $color-white;
     font-size: 13px;
 }
 
-.button:hover {
+.normal {
+    width: 100%;
+    border-radius: 8px;
+    background-color: $color-blue-primary;
+    line-height: 37px;
+    color: $color-white;
+}
+
+.normal:hover {
     background-color: $color-blue-dark;
     cursor: pointer;
 }
@@ -18,4 +21,14 @@
 .button:active {
     transition: none;
     transform:scale(.96);
+}
+
+.transparent {
+    background-color: unset;
+    padding: 0;
+    color: $color-blue-primary;
+}
+
+.transparent:hover {
+    cursor: pointer;
 }

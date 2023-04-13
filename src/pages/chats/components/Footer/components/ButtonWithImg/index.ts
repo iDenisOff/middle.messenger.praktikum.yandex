@@ -14,10 +14,6 @@ export class ButtonWithImg extends Block<ButtonWithImgProps> {
         super('button', props);
     }
 
-    init() {
-
-    }
-
     render() {
         return this.compile(template, { ...this.props, send });
     }

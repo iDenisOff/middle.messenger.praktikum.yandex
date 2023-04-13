@@ -1,7 +1,9 @@
 import { Block } from '@src/utils/Block';
+import authController from '@src/controllers/AuthController';
+import router from '@src/utils/Router';
+import { SigninData } from '@src/api/AuthAPI';
 import { Button } from '@src/components/Button';
 import { FormInput } from '@src/components/FormInput';
-import { Link } from '@src/components/Link';
 import { sendForm } from '@src/utils/sendForm';
 import {
     ENTER,
@@ -46,12 +48,18 @@ export class Form extends Block {
         this.children.signIn = new Button({
             text: ENTER,
             events: {
-                click: () => sendForm(this.children)
+                click: () => {
+                    const data: SigninData = sendForm(this.children);
+                    authController.signIn(data);
+                }
             }
         });
-        this.children.link = new Link({
-            href: '/sign-up',
-            text: REGISTER
+        this.children.signUp = new Button({
+            text: REGISTER,
+            className: 'transparent',
+            events: {
+                click: () => router.go('/sign-up')
+            }
         });
     }
 

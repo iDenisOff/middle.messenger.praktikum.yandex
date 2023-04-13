@@ -13,6 +13,9 @@ export const GO_BACK = 'Назад к чатам';
 export const SAVE = 'Сохранить';
 export const DISPLAY_NAME = 'Имя в чате';
 export const PROFILE = 'Профиль';
+export const EDIT_DATA = 'Изменить данные';
+export const EDIT_PASSWD = 'Изменить пароль';
+export const EXIT = 'Выйти';
 
 export enum TypesChecked {
     LOGIN = 'login',

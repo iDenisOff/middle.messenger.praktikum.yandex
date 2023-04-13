@@ -6,6 +6,9 @@ import './link.pcss';
 interface LinkProps {
     href: string;
     text: string;
+    events?: {
+        click: () => void;
+    }
 }
 
 export class Link extends Block<LinkProps> {

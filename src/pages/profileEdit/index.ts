@@ -1,5 +1,6 @@
 import { Block } from '@src/utils/Block';
-import back from '@static/back.svg';
+import { BackButton } from '@src/components/BackButton';
+import router from '@src/utils/Router';
 
 import { Form } from './components/Form';
 
@@ -9,14 +10,15 @@ import './profileEdit.pcss';
 export class ProfileEdit extends Block {
     constructor() {
         super('main', {});
-
-        this.props.back = back;
-        this.props.goBack = '/profile';
     }
 
     init() {
         this.element.classList.add('profile-edit');
-
+        this.children.back = new BackButton({
+            events: {
+                click: () => router.go('/profile')
+            }
+        });
         this.children.form = new Form();
     }
 

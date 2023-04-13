@@ -5,6 +5,7 @@ import './button.pcss';
 
 interface ButtonProps {
     text: string;
+    className?: 'normal' | 'transparent';
     events: {
         click: () => void;
     };
@@ -17,6 +18,7 @@ export class Button extends Block<ButtonProps> {
 
     init() {
         this.element.classList.add('button');
+        this.element.classList.add(this.props.className ?? 'normal');
     }
 
     render() {
