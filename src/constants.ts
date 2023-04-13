@@ -16,6 +16,8 @@ export const PROFILE = 'Профиль';
 export const EDIT_DATA = 'Изменить данные';
 export const EDIT_PASSWD = 'Изменить пароль';
 export const EXIT = 'Выйти';
+export const UPLOAD_FILE = 'Загрузите файл';
+export const CHANGE = 'Поменять';
 
 export enum TypesChecked {
     LOGIN = 'login',

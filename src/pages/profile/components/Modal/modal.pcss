@@ -1,0 +1,40 @@
+@import url('../../../../../styles.pcss');
+
+.modal {
+    opacity: 0;
+    visibility: hidden;
+    width: 100%;
+    max-width: 260px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 30;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 12px;
+
+    &_title {
+        font-weight: 500;
+        font-size: 15px;
+        line-height: 20px;
+        text-align: center;
+        color: $color-black-light;
+    }
+
+    &_input {
+        text-align: center;
+        padding: 40px 0;
+    }
+}
+
+#upload-avatar {
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+}
+
+.modal.active {
+    opacity: 1;
+    visibility: visible;
+}

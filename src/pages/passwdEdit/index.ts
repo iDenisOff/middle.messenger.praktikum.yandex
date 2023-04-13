@@ -1,5 +1,4 @@
 import { Block } from '@src/utils/Block';
-import back from '@static/back.svg';
 import { BackButton } from '@src/components/BackButton';
 import router from '@src/utils/Router';
 
@@ -11,9 +10,6 @@ import './PasswdEdit.pcss';
 export class PasswdEdit extends Block {
     constructor() {
         super('main', {});
-
-        this.props.back = back;
-        this.props.goBack = '/profile';
     }
 
     init() {

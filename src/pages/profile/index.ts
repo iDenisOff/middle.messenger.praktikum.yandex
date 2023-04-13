@@ -17,6 +17,9 @@ import {
 } from '@src/constants';
 import avatar from '@static/avatar.svg';
 
+import { Modal } from './components/Modal';
+import { Overlay } from './components/Overlay';
+import { Avatar } from './components/Avatar';
 import { Row } from './components/Row';
 import { RowWithButton } from './components/RowWithButton';
 
@@ -28,6 +31,26 @@ class Profile extends Block {
         super('main', {});
     }
 
+    componentDidMount() {
+        this.children.avatar.setProps({
+            events: {
+                click: () => {
+                    this.children.modal.element.classList.add('active');
+                    this.children.overlay.element.classList.add('active');
+                }
+            }
+        });
+
+        this.children.overlay.setProps({
+            events: {
+                click: () => {
+                    this.children.modal.element.classList.remove('active');
+                    this.children.overlay.element.classList.remove('active');
+                }
+            }
+        });
+    }
+
     init() {
         this.element.classList.add('profile');
         this.children.back = new BackButton({
@@ -35,6 +58,7 @@ class Profile extends Block {
                 click: () => router.go('/messenger')
             }
         });
+        this.children.avatar = new Avatar({});
         this.children.email = new Row({ title: EMAIL });
         this.children.login = new Row({ title: USER_NAME });
         this.children.firstName = new Row({ title: FIRST_NAME });
@@ -68,12 +92,15 @@ class Profile extends Block {
                 }
             })
         });
+        this.children.modal = new Modal();
+        this.children.overlay = new Overlay({});
     }
 
     render() {
         if (this.props.isLoading === false) {
             const { data } = this.props;
 
+            this.children.avatar.setProps({ avatar: data.avatar });
             this.children.email.setProps({ value: data.email });
             this.children.login.setProps({ value: data.login });
             this.children.firstName.setProps({ value: data.first_name });
