@@ -30,7 +30,6 @@ class Route {
     leave() {
         if (this._block) {
             this._block = null;
-            //this._block.hide();
         }
     }
 

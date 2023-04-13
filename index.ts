@@ -7,16 +7,7 @@ import { PasswdEdit } from '@src/pages/passwdEdit';
 import { UIError } from '@src/pages/error';
 import authController from '@src/controllers/AuthController';
 import Router from '@src/utils/Router';
-
-enum Routes {
-    SIGN_IN = '/',
-    SIGN_UP = '/sign-up',
-    CHATS = '/messenger',
-    PROFILE = '/profile',
-    PROFILE_EDIT = '/settings',
-    PASSWD_EDIT = '/passwd-edit',
-    ERROR = '*'
-}
+import { Routes } from '@src/constants';
 
 Router
     .setUnprotectedPaths([Routes.SIGN_IN, Routes.SIGN_UP])

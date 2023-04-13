@@ -15,7 +15,6 @@ import {
     EDIT_DATA,
     EDIT_PASSWD
 } from '@src/constants';
-import avatar from '@static/avatar.svg';
 
 import { Modal } from './components/Modal';
 import { Overlay } from './components/Overlay';
@@ -109,7 +108,7 @@ class Profile extends Block {
             this.children.phone.setProps({ value: data.phone });
         }
 
-        return this.compile(template, { ...this.props, avatar: this.props.data?.avatar ?? avatar });
+        return this.compile(template, this.props);
     }
 }
 

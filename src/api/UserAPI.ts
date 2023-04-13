@@ -19,6 +19,10 @@ class UserAPI extends BaseAPI {
         super('/user');
     }
 
+    public changeUserAvatar(data: FormData) {
+        return this.http.put('/profile/avatar', { data });
+    }
+
     public changeUserData(data: UserData) {
         return this.http.put('/profile', { data });
     }

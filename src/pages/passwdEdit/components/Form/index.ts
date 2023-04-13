@@ -4,9 +4,9 @@ import userController from '@src/controllers/UserController';
 import { store, StoreEvents } from '@src/store/store';
 import { UserPassword } from '@src/api/UserAPI';
 import { EditableRow } from '@src/components/EditableRow';
-import { SAVE, TypesChecked } from '@src/constants';
+import { SAVE, TypesChecked, URLs } from '@src/constants';
 import { sendForm } from '@src/utils/sendForm';
-import avatar from '@static/avatar.svg';
+import defAvatar from '@static/avatar.svg';
 
 import template from 'bundle-text:./form.hbs';
 import './form.pcss';
@@ -63,6 +63,9 @@ export class Form extends Block {
     }
 
     render() {
-        return this.compile(template, { ...this.props, avatar: this.props.data?.avatar ?? avatar });
+        const avatar =
+            this.props.data?.avatar ? `${URLs.RESOURCES}${this.props.data.avatar}` : defAvatar;
+
+        return this.compile(template, { ...this.props, avatar });
     }
 }

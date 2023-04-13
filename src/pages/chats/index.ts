@@ -1,5 +1,5 @@
 import { Block } from '@src/utils/Block';
-import { PROFILE } from '@src/constants';
+import { MY_PROFILE } from '@src/constants';
 
 import { ProfileLink } from './components/ProfileLink';
 import { Search } from './components/Search';
@@ -20,7 +20,7 @@ export class Chats extends Block {
         const searchValue = '';
 
         this.element.classList.add('chats');
-        this.children.profileLink = new ProfileLink({ href: '/profile', label: PROFILE });
+        this.children.profileLink = new ProfileLink({ href: '/profile', label: MY_PROFILE });
         this.children.search = new Search({ value: searchValue });
         this.children.header = new Header({ name: 'Вадим' });
         this.children.content = new Content();

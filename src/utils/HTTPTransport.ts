@@ -1,3 +1,5 @@
+import { URLs } from '@src/constants';
+
 const enum METHOD {
     GET = 'get',
     POST = 'post',
@@ -23,7 +25,7 @@ function queryStringify(data: XMLHttpRequestBodyInit): string {
 }
 
 export default class HTTPTransport {
-    static API_URL = 'https://ya-praktikum.tech/api/v2';
+    static API_URL = URLs.API;
 
     protected endpoint: string;
 
@@ -64,6 +66,10 @@ export default class HTTPTransport {
 
             xhr.timeout = timeout;
 
+            if (data?.constructor.name !== 'FormData') {
+                xhr.setRequestHeader('Content-Type', 'application/json');
+            }
+
             if (headers) {
                 Object.keys(headers).forEach(header => {
                     xhr.setRequestHeader(header, headers[header]);
@@ -84,15 +90,17 @@ export default class HTTPTransport {
             xhr.onerror = () => reject({ reason: 'network error' });
             xhr.ontimeout = () => reject({ reason: 'timeout' });
 
-            xhr.setRequestHeader('Content-Type', 'application/json');
-
             xhr.withCredentials = true;
             xhr.responseType = 'json';
 
             if (method === METHOD.GET || !data) {
                 xhr.send();
             } else {
-                xhr.send(JSON.stringify(data));
+                if (data?.constructor.name !== 'FormData') {
+                    xhr.send(JSON.stringify(data));
+                } else {
+                    xhr.send(data);
+                }
             }
         });
     }

@@ -3,6 +3,14 @@ import { UserData, UserPassword } from '@src/api/UserAPI';
 import router from '@src/utils/Router';
 
 class UserController {
+    changeUserAvatar(data: FormData) {
+        userAPI.changeUserAvatar(data)
+            .then(() => {
+                router.go('/messenger');
+            })
+            .catch(console.log);
+    }
+
     changeUserData(data: UserData) {
         userAPI.changeUserData(data)
             .then(() => {
