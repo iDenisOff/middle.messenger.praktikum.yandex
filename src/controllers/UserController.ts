@@ -1,6 +1,6 @@
 import userAPI from '@src/api/UserAPI';
-import { UserData, UserPassword } from '@src/api/UserAPI';
 import router from '@src/utils/Router';
+import { UserData, UserPassword } from '@src/api/UserAPI';
 
 class UserController {
     changeUserAvatar(data: FormData) {
