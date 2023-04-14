@@ -1,9 +1,9 @@
 import { Block } from '@src/utils/Block';
 
-import template from 'bundle-text:./form.hbs';
-import './form.pcss';
+import template from 'bundle-text:./modalForm.hbs';
+import './modalForm.pcss';
 
-interface FormProps {
+interface ModalFormProps {
     title: string;
     body: Block;
     footer: Block;
@@ -12,8 +12,8 @@ interface FormProps {
     };
 }
 
-export class Form extends Block<FormProps> {
-    constructor(props: FormProps) {
+export class ModalForm extends Block<ModalFormProps> {
+    constructor(props: ModalFormProps) {
         super('form', props);
     }
 

@@ -1,7 +1,8 @@
+import { Button } from '@src/components/Button';
 import { Block } from '@src/utils/Block';
+import router from '@src/utils/Router';
 import { MY_PROFILE } from '@src/constants';
 
-import { ProfileLink } from './components/ProfileLink';
 import { Search } from './components/Search';
 import { Tab } from './components/Tab';
 import { Header } from './components/Header';
@@ -20,7 +21,13 @@ export class Chats extends Block {
         const searchValue = '';
 
         this.element.classList.add('chats');
-        this.children.profileLink = new ProfileLink({ href: '/profile', label: MY_PROFILE });
+        this.children.goToProfile = new Button({
+            text: MY_PROFILE,
+            className: 'transparent-grey',
+            events: {
+                click: () => router.go('/profile')
+            }
+        });
         this.children.search = new Search({ value: searchValue });
         this.children.header = new Header({ name: 'Вадим' });
         this.children.content = new Content();

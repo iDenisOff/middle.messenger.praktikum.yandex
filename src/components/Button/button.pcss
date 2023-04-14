@@ -15,12 +15,15 @@
 
 .normal:hover {
     background-color: $color-blue-dark;
-    cursor: pointer;
 }
 
 .button:active {
     transition: none;
     transform:scale(.96);
+}
+
+.button:hover {
+    cursor: pointer;
 }
 
 .transparent {
@@ -29,6 +32,8 @@
     color: $color-blue-primary;
 }
 
-.transparent:hover {
-    cursor: pointer;
+.transparent-grey {
+    background-color: unset;
+    padding: 0;
+    color: $color-grey-primary;
 }

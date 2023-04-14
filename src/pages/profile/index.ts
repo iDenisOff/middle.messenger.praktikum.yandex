@@ -4,6 +4,7 @@ import authController from '@src/controllers/AuthController';
 import router from '@src/utils/Router';
 import { Button } from '@src/components/Button';
 import { BackButton } from '@src/components/BackButton';
+import { Overlay } from '@src/components/Overlay';
 import {
     EMAIL,
     USER_NAME,
@@ -16,11 +17,10 @@ import {
     EDIT_PASSWD
 } from '@src/constants';
 
-import { Modal } from './components/Modal';
-import { Overlay } from './components/Overlay';
 import { Avatar } from './components/Avatar';
 import { Row } from './components/Row';
 import { RowWithButton } from './components/RowWithButton';
+import { Modal } from './components/Modal';
 
 import template from 'bundle-text:./profile.hbs';
 import './profile.pcss';
