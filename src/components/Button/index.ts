@@ -6,7 +6,7 @@ import './button.pcss';
 interface ButtonProps {
     text: string;
     className?: 'normal' | 'transparent' | 'transparent-grey';
-    events: {
+    events?: {
         click: () => void;
     };
 }

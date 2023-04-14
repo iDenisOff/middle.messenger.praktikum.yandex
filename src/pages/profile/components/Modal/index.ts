@@ -4,6 +4,7 @@ import { ModalForm } from '@src/components/ModalForm';
 import { CHANGE, UPLOAD_FILE } from '@src/constants';
 import { FileInput } from '@src/components/FileInput';
 import { Button } from '@src/components/Button';
+
 import template from 'bundle-text:./modal.hbs';
 import './modal.pcss';
 

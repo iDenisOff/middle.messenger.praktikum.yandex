@@ -18,6 +18,9 @@ export const EDIT_PASSWD = 'Изменить пароль';
 export const EXIT = 'Выйти';
 export const UPLOAD_FILE = 'Загрузите файл';
 export const CHANGE = 'Поменять';
+export const ADD_CHAT = 'Добавить чат';
+export const ADD = 'Добавить';
+export const TITLE = 'Название';
 
 export enum TypesChecked {
     LOGIN = 'login',
