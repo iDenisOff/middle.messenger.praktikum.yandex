@@ -28,6 +28,8 @@ export class Tab extends Block<TabProps> {
     render() {
         if (this.props.activeChatId === this.props.id) {
             this.element.classList.add('tab-active');
+        } else {
+            this.element.classList.remove('tab-active');
         }
 
         return this.compile(template, this.props);

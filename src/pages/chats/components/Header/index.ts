@@ -6,7 +6,7 @@ import './header.pcss';
 
 interface HeaderProps {
     avatar?: string;
-    name: string;
+    title?: string;
 }
 
 export class Header extends Block<HeaderProps> {

@@ -59,19 +59,23 @@ export class Chats extends Block {
                 const { chats } = store.getState();
 
                 this.childrenCollection.tabs = chats.data!.map((chat: Chat) => new Tab({
-                    id: chat.id.toString(),
-                    activeChatId: chats.activeChatId,
+                    id: chat.id,
+                    activeChatId: chats.activeChat?.id ?? null,
                     name: chat.title,
                     text: chat.last_message?.content,
                     time: chat.last_message?.time,
                     count: chat.unread_count,
                     events: {
                         click: (e) => {
-                            const activeChatId = e.currentTarget.id;
+                            const selectChatId = parseInt(e.currentTarget.id);
 
-                            store.set('chats.activeChatId',
-                                activeChatId === this.props.activeChatId ? null : activeChatId
-                            );
+                            if (selectChatId === this.props.activeChat?.id) {
+                                console.log();
+                                store.set('chats.activeChat', null);
+                            } else {
+                                const { id, title, avatar } = chats.data?.find((el) => el.id === selectChatId)!;
+                                store.set('chats.activeChat', { id, title, avatar });
+                            }
                         }
                     }
                 }));
@@ -93,7 +97,7 @@ export class Chats extends Block {
             }
         });
         this.children.search = new Search({ value: searchValue });
-        this.children.header = new Header({ name: 'Вадим' });
+        this.children.header = new Header({});
         this.children.content = new Content();
         this.children.footer = new Footer({});
         this.children.addChatModal = new Modal({
@@ -108,6 +112,12 @@ export class Chats extends Block {
     }
 
     render() {
+        if (this.props.data) {
+            this.children.header.setProps({
+                title: this.props.activeChat?.title
+            });
+        }
+
         return this.compile(template, this.props);
     }
 }

@@ -8,6 +8,12 @@ export enum StoreEvents {
     Updated = 'Updated'
 }
 
+export type ActiveChat = {
+    avatar: null | string,
+    id: number;
+    title: string;
+};
+
 type State = {
     user: {
         data: null | User;
@@ -15,7 +21,7 @@ type State = {
         hasError: boolean;
     }
     chats: {
-        activeChatId: null | number;
+        activeChat: null | ActiveChat;
         data: null | Chat[]
         isLoading: boolean;
         hasError: boolean;
@@ -29,7 +35,7 @@ const initialState: State = {
         hasError: false
     },
     chats: {
-        activeChatId: null,
+        activeChat: null,
         data: null,
         isLoading: true,
         hasError: false
