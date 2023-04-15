@@ -4,13 +4,15 @@ import {
     DELETE_USER,
     DELETE_CHAT,
     USER_NAME,
-    ADD
+    ADD,
+    DELETE
 } from '@src/constants';
 import chatsController from '@src/controllers/ChatsController';
 import userController from '@src/controllers/UserController';
 import { ModifyChatUsersRequest } from '@src/api/ChatsAPI';
 import { store, StoreEvents } from '@src/store/store';
 import { Overlay } from '@src/components/Overlay';
+import { User } from '@src/api/AuthAPI';
 import add from '@static/add.svg';
 import del from '@static/del.svg';
 
@@ -19,7 +21,6 @@ import { Modal } from '../../../Modal';
 
 import template from 'bundle-text:./menu.hbs';
 import './menu.pcss';
-import {User} from "@src/api/AuthAPI";
 
 export class Menu extends Block {
     constructor() {
@@ -34,8 +35,16 @@ export class Menu extends Block {
         this.children.addUser.setProps({
             events: {
                 click: () => {
-                    console.log(this.children.addUsersToChatModal.element);
                     this.children.addUsersToChatModal.element.classList.add('active');
+                    this.children.overlay.element.classList.add('active');
+                }
+            }
+        });
+
+        this.children.deleteUser.setProps({
+            events: {
+                click: () => {
+                    this.children.deleteUsersFromChatModal.element.classList.add('active');
                     this.children.overlay.element.classList.add('active');
                 }
             }
@@ -45,6 +54,7 @@ export class Menu extends Block {
             events: {
                 click: () => {
                     this.children.addUsersToChatModal.element.classList.remove('active');
+                    this.children.deleteUsersFromChatModal.element.classList.remove('active');
                     this.children.overlay.element.classList.remove('active');
                 }
             }
@@ -74,7 +84,7 @@ export class Menu extends Block {
         this.children.addUsersToChatModal = new Modal({
             title: ADD_USER,
             inputLabel: USER_NAME,
-            inputName: 'user',
+            inputName: 'login',
             buttonText: ADD,
             onSubmit: () => {
                 const input = this.children.addUsersToChatModal.children.form.element.getElementsByClassName('input')[0];
@@ -87,6 +97,25 @@ export class Menu extends Block {
                     };
 
                     chatsController.addUsersToChat(data);
+                })();
+            }
+        });
+        this.children.deleteUsersFromChatModal = new Modal({
+            title: DELETE_USER,
+            inputLabel: USER_NAME,
+            inputName: 'login',
+            buttonText: DELETE,
+            onSubmit: () => {
+                const input = this.children.deleteUsersFromChatModal.children.form.element.getElementsByClassName('input')[0];
+
+                (async () => {
+                    const foundUsers: User[] = await userController.searchUsers({ login: (input as HTMLInputElement).value });
+                    const data: ModifyChatUsersRequest = {
+                        users: [ foundUsers[0].id ],
+                        chatId: this.props.activeChat.id
+                    };
+
+                    chatsController.deleteUsersFromChat(data);
                 })();
             }
         });

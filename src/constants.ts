@@ -22,6 +22,7 @@ export const ADD_CHAT = 'Добавить чат';
 export const ADD_USER = 'Добавить пользователя';
 export const DELETE_USER = 'Удалить пользователя';
 export const DELETE_CHAT = 'Удалить чат';
+export const DELETE = 'Удалить';
 export const ADD = 'Добавить';
 export const TITLE = 'Название';
 
