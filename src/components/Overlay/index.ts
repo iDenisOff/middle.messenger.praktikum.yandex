@@ -4,6 +4,7 @@ import template from 'bundle-text:./overlay.hbs';
 import './overlay.pcss';
 
 interface OverlayProps {
+    className?: string;
     events?: {
         click: () => {}
     }
@@ -16,6 +17,10 @@ export class Overlay extends Block<OverlayProps> {
 
     init() {
         this.element.classList.add('overlay');
+
+        if (this.props.className) {
+            this.element.classList.add(this.props.className);
+        }
     }
 
     render() {

@@ -1,4 +1,5 @@
 import BaseAPI from './BaseAPI';
+import { User } from '@src/api/AuthAPI';
 
 export interface UserData {
     'email': string,
@@ -12,6 +13,10 @@ export interface UserData {
 export interface UserPassword {
     'oldPassword': string,
     'newPassword': string
+}
+
+export interface SearchUsersRequest {
+    'login': string
 }
 
 class UserAPI extends BaseAPI {
@@ -29,6 +34,10 @@ class UserAPI extends BaseAPI {
 
     public changeUserPassword(data: UserPassword) {
         return this.http.put('/password', { data });
+    }
+
+    public searchUsers(data: SearchUsersRequest): Promise<User[]> {
+        return this.http.post('/search', { data });
     }
 
     create = undefined;

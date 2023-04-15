@@ -19,6 +19,9 @@ export const EXIT = 'Выйти';
 export const UPLOAD_FILE = 'Загрузите файл';
 export const CHANGE = 'Поменять';
 export const ADD_CHAT = 'Добавить чат';
+export const ADD_USER = 'Добавить пользователя';
+export const DELETE_USER = 'Удалить пользователя';
+export const DELETE_CHAT = 'Удалить чат';
 export const ADD = 'Добавить';
 export const TITLE = 'Название';
 

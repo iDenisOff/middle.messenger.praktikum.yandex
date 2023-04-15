@@ -10,6 +10,7 @@ import {
 } from '@src/constants';
 import chatsController from '@src/controllers/ChatsController';
 import { store, StoreEvents } from '@src/store/store';
+import { Chat, CreateChatRequest } from '@src/api/ChatsAPI';
 
 import { Search } from './components/Search';
 import { Tab } from './components/Tab';
@@ -17,7 +18,6 @@ import { Header } from './components/Header';
 import { Content } from './components/Content';
 import { Footer } from './components/Footer';
 import { Modal } from './components/Modal';
-import { Chat } from '@src/api/ChatsAPI';
 
 import template from 'bundle-text:./chats.hbs';
 import './chats.pcss';
@@ -70,7 +70,6 @@ export class Chats extends Block {
                             const selectChatId = parseInt(e.currentTarget.id);
 
                             if (selectChatId === this.props.activeChat?.id) {
-                                console.log();
                                 store.set('chats.activeChat', null);
                             } else {
                                 const { id, title, avatar } = chats.data?.find((el) => el.id === selectChatId)!;
@@ -104,7 +103,13 @@ export class Chats extends Block {
             title: ADD_CHAT,
             inputLabel: TITLE,
             inputName: 'chat',
-            buttonText: ADD
+            buttonText: ADD,
+            onSubmit: () => {
+                const input = this.children.addChatModal.children.form.element.getElementsByClassName('input')[0];
+                const data: CreateChatRequest = { title: (input as HTMLInputElement).value };
+
+                chatsController.createChat(data);
+            }
         });
         this.children.overlay = new Overlay({});
 

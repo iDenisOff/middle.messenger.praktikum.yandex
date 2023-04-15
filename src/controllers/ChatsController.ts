@@ -25,19 +25,26 @@ class ChatsController {
 
     addUsersToChat(data: ModifyChatUsersRequest) {
         chatsAPI.addUsersToChat(data)
-            .then(() => console.log('PUT: /chats/users'))
+            .then(() => {
+                router.go('/messenger');
+            })
             .catch(console.log);
     }
 
     deleteUsersFromChat(data: ModifyChatUsersRequest) {
         chatsAPI.deleteUsersFromChat(data)
-            .then(() => console.log('DELETE: /chats/users'))
+            .then(() => {
+                router.go('/messenger');
+            })
             .catch(console.log);
     }
 
     deleteChat(data: DeleteChatRequest) {
         chatsAPI.deleteChat(data)
-            .then(() => console.log('DELETE: /chats'))
+            .then(() => {
+                store.set('chats.activeChat', null);
+                router.go('/messenger');
+            })
             .catch(console.log);
     }
 
