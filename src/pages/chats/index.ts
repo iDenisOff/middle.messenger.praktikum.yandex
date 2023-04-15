@@ -54,6 +54,30 @@ export class Chats extends Block {
     }
 
     init() {
+        store.on(StoreEvents.Updated, () => {
+            if (store.getState() && store.getState().chats.data) {
+                const { chats } = store.getState();
+
+                this.childrenCollection.tabs = chats.data!.map((chat: Chat) => new Tab({
+                    id: chat.id.toString(),
+                    activeChatId: chats.activeChatId,
+                    name: chat.title,
+                    text: chat.last_message?.content,
+                    time: chat.last_message?.time,
+                    count: chat.unread_count,
+                    events: {
+                        click: (e) => {
+                            const activeChatId = e.currentTarget.id;
+
+                            store.set('chats.activeChatId',
+                                activeChatId === this.props.activeChatId ? null : activeChatId
+                            );
+                        }
+                    }
+                }));
+            }
+        });
+
         const searchValue = '';
 
         this.element.classList.add('chats');
@@ -76,10 +100,7 @@ export class Chats extends Block {
             title: ADD_CHAT,
             inputLabel: TITLE,
             inputName: 'chat',
-            buttonText: ADD,
-            onClick: () => {
-                console.log('click');
-            }
+            buttonText: ADD
         });
         this.children.overlay = new Overlay({});
 
@@ -87,18 +108,6 @@ export class Chats extends Block {
     }
 
     render() {
-        let tabs = [];
-
-        if (this.props.isLoading === false) {
-            const { data } = this.props;
-
-            tabs = data.map((chat: Chat) => new Tab({
-                name: chat.title,
-                text: chat.last_message?.content,
-                count: chat.unread_count
-            }).element.outerHTML);
-        }
-
-        return this.compile(template, { ...this.props, tabs });
+        return this.compile(template, this.props);
     }
 }

@@ -15,6 +15,7 @@ type State = {
         hasError: boolean;
     }
     chats: {
+        activeChatId: null | number;
         data: null | Chat[]
         isLoading: boolean;
         hasError: boolean;
@@ -28,6 +29,7 @@ const initialState: State = {
         hasError: false
     },
     chats: {
+        activeChatId: null,
         data: null,
         isLoading: true,
         hasError: false

@@ -13,7 +13,6 @@ interface ModalProps {
     inputLabel: string;
     inputName: string;
     buttonText: string;
-    onClick: () => void;
 }
 
 export class Modal extends Block<ModalProps> {

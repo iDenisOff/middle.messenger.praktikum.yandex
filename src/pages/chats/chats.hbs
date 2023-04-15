@@ -18,9 +18,11 @@
         </div>
     </div>
     <div class="chats__chat">
-        {{{header}}}
-        {{{content}}}
-        {{{footer}}}
+        {{#if activeChatId}}
+            {{{header}}}
+            {{{content}}}
+            {{{footer}}}
+        {{/if}}
     </div>
     {{{addChatModal}}}
     {{{overlay}}}

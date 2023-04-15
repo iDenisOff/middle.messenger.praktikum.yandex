@@ -17,6 +17,8 @@ export class Block<P extends Record<string, any> = any> {
 
     public children: Record<string, Block>;
 
+    public childrenCollection: Record<string, Array<Block>>;
+
     private eventBus: () => EventBus;
 
     private _element: HTMLElement | null = null;
@@ -42,6 +44,7 @@ export class Block<P extends Record<string, any> = any> {
 
         this.children = children;
         this.props = this._makePropsProxy(props);
+        this.childrenCollection = this._makeChildrenCollectionProxy({});
 
         this.eventBus = () => eventBus;
 
@@ -160,6 +163,16 @@ export class Block<P extends Record<string, any> = any> {
             contextAndStubs[name] = `<div data-id="${component.id}"></div>`;
         });
 
+        for (const childrenCollection in this.childrenCollection) {
+            for (const newChild of this.childrenCollection[childrenCollection]) {
+                if (!contextAndStubs[childrenCollection]) {
+                    contextAndStubs[childrenCollection] = [];
+                }
+
+                contextAndStubs[childrenCollection].push(`<div data-id="${newChild.id}"></div>`);
+            }
+        }
+
         const tpl = Handlebars.compile(template);
 
         const html = tpl(contextAndStubs);
@@ -181,11 +194,47 @@ export class Block<P extends Record<string, any> = any> {
             stub.replaceWith(component.getContent()!);
         });
 
+        for (const childrenCollection in this.childrenCollection) {
+            for (const newChild of this.childrenCollection[childrenCollection]) {
+                const stub = temp.content.querySelector(`[data-id="${newChild.id}"]`);
+
+                if (!stub) {
+                    break;
+                }
+
+                newChild.getContent()?.append(...Array.from(stub.childNodes));
+
+                stub.replaceWith(newChild.getContent()!);
+            }
+        }
+
         return temp.content;
     }
 
     getContent() {
         return this.element;
+    }
+
+    _makeChildrenCollectionProxy(childrenCollection: Record<string, any>) {
+        const self = this;
+
+        return new Proxy(childrenCollection, {
+            get(target, prop: string) {
+                const value = target[prop];
+                return typeof value === 'function' ? value.bind(target) : value;
+            },
+            set(target, prop: string, value) {
+                const oldTarget = { ...target };
+
+                target[prop as string] = value;
+
+                self.eventBus().emit(Block.EVENTS.FLOW_CDU, oldTarget, target);
+                return true;
+            },
+            deleteProperty() {
+                throw new Error('Нет доступа');
+            }
+        });
     }
 
     _makePropsProxy(props: P) {
