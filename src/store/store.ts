@@ -1,6 +1,7 @@
 import { EventBus } from '@src/utils/EventBus';
 import { User } from '@src/api/AuthAPI';
 import { Block } from '@src/utils/Block';
+import { Chat } from '@src/api/ChatsAPI';
 import set from '@src/utils/helpers';
 
 export enum StoreEvents {
@@ -13,10 +14,20 @@ type State = {
         isLoading: boolean;
         hasError: boolean;
     }
+    chats: {
+        data: null | Chat[]
+        isLoading: boolean;
+        hasError: boolean;
+    }
 };
 
 const initialState: State = {
     user: {
+        data: null,
+        isLoading: true,
+        hasError: false
+    },
+    chats: {
         data: null,
         isLoading: true,
         hasError: false

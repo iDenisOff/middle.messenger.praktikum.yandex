@@ -3,9 +3,9 @@ import BaseAPI from './BaseAPI';
 export interface Chat {
     'id': number,
     'title': string,
-    'avatar': string,
+    'avatar': null | string,
     'unread_count': number,
-    'last_message': {
+    'last_message': null | {
         'user': {
             'first_name': string,
             'second_name': string,
@@ -20,9 +20,9 @@ export interface Chat {
 }
 
 export interface GetChatsRequest {
-    'offset': number,
-    'limit': number,
-    'title': string
+    'offset'?: number,
+    'limit'?: number,
+    'title'?: string
 }
 
 export interface CreateChatRequest {

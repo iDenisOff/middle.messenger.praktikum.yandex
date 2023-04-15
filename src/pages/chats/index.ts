@@ -8,6 +8,8 @@ import {
     ADD,
     TITLE
 } from '@src/constants';
+import chatsController from '@src/controllers/ChatsController';
+import { store, StoreEvents } from '@src/store/store';
 
 import { Search } from './components/Search';
 import { Tab } from './components/Tab';
@@ -15,6 +17,7 @@ import { Header } from './components/Header';
 import { Content } from './components/Content';
 import { Footer } from './components/Footer';
 import { Modal } from './components/Modal';
+import { Chat } from '@src/api/ChatsAPI';
 
 import template from 'bundle-text:./chats.hbs';
 import './chats.pcss';
@@ -22,13 +25,19 @@ import './chats.pcss';
 export class Chats extends Block {
     constructor() {
         super('main', {});
+
+        chatsController.fetchChats();
+
+        store.on(StoreEvents.Updated, () => {
+            this.setProps(store.getState().chats);
+        });
     }
 
     componentDidMount() {
         this.children.plusChat.setProps({
             events: {
                 click: () => {
-                    this.children.modal.element.classList.add('active');
+                    this.children.addChatModal.element.classList.add('active');
                     this.children.overlay.element.classList.add('active');
                 }
             }
@@ -37,7 +46,7 @@ export class Chats extends Block {
         this.children.overlay.setProps({
             events: {
                 click: () => {
-                    this.children.modal.element.classList.remove('active');
+                    this.children.addChatModal.element.classList.remove('active');
                     this.children.overlay.element.classList.remove('active');
                 }
             }
@@ -63,25 +72,33 @@ export class Chats extends Block {
         this.children.header = new Header({ name: 'Вадим' });
         this.children.content = new Content();
         this.children.footer = new Footer({});
-        this.children.tab = new Tab({
-            name: 'Андрей',
-            text: 'Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то момент попросила',
-            time: '10:49',
-            count: 2
-        });
-        this.children.modal = new Modal({
+        this.children.addChatModal = new Modal({
             title: ADD_CHAT,
             inputLabel: TITLE,
             inputName: 'chat',
-            buttonText: ADD
+            buttonText: ADD,
+            onClick: () => {
+                console.log('click');
+            }
         });
         this.children.overlay = new Overlay({});
-
 
         this.children.goToProfile.element.style.gridColumnStart = '3';
     }
 
     render() {
-        return this.compile(template, this.props);
+        let tabs = [];
+
+        if (this.props.isLoading === false) {
+            const { data } = this.props;
+
+            tabs = data.map((chat: Chat) => new Tab({
+                name: chat.title,
+                text: chat.last_message?.content,
+                count: chat.unread_count
+            }).element.outerHTML);
+        }
+
+        return this.compile(template, { ...this.props, tabs });
     }
 }

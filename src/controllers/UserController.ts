@@ -6,7 +6,7 @@ class UserController {
     changeUserAvatar(data: FormData) {
         userAPI.changeUserAvatar(data)
             .then(() => {
-                router.go('/messenger');
+                router.go('/profile');
             })
             .catch(console.log);
     }

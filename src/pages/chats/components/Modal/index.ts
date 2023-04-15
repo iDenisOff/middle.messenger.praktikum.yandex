@@ -2,6 +2,8 @@ import { Block } from '@src/utils/Block';
 import { ModalForm } from '@src/components/ModalForm';
 import { FormInput } from '@src/components/FormInput';
 import { Button } from '@src/components/Button';
+import { CreateChatRequest } from '@src/api/ChatsAPI';
+import chatsController from '@src/controllers/ChatsController';
 
 import template from 'bundle-text:./modal.hbs';
 import './modal.pcss';
@@ -11,6 +13,7 @@ interface ModalProps {
     inputLabel: string;
     inputName: string;
     buttonText: string;
+    onClick: () => void;
 }
 
 export class Modal extends Block<ModalProps> {
@@ -31,7 +34,10 @@ export class Modal extends Block<ModalProps> {
                 text: this.props.buttonText,
                 events: {
                     click: () => {
-                        console.log('click');
+                        const input = this.children.form.element.getElementsByClassName('input')[0];
+                        const data: CreateChatRequest = { title: (input as HTMLInputElement).value };
+
+                        chatsController.createChat(data);
                     }
                 }
             })

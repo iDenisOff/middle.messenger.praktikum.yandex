@@ -1,4 +1,6 @@
-import chatsAPI from '@src/api/ChatsAPI';
+import chatsAPI, { Chat } from '@src/api/ChatsAPI';
+import router from '@src/utils/Router';
+import { store } from '@src/store/store';
 import {
     GetChatsRequest,
     CreateChatRequest,
@@ -15,7 +17,9 @@ class ChatsController {
 
     createChat(data: CreateChatRequest) {
         chatsAPI.createChat(data)
-            .then(() => console.log('POST: /chats'))
+            .then(() => {
+                router.go('/messenger');
+            })
             .catch(console.log);
     }
 
@@ -35,6 +39,19 @@ class ChatsController {
         chatsAPI.deleteChat(data)
             .then(() => console.log('DELETE: /chats'))
             .catch(console.log);
+    }
+
+    async fetchChats() {
+        store.set('chats.isLoading', true);
+
+        await chatsAPI.getChats({})
+            .then((chats: Chat[]) => {
+                store.set('chats.data', chats);
+            })
+            .catch(() => console.log)
+            .finally(() => {
+                store.set('chats.isLoading', false);
+            });
     }
 }
 
