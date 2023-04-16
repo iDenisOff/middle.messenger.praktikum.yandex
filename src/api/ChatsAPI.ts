@@ -51,11 +51,11 @@ class ChatsAPI extends BaseAPI {
         return this.http.post('', { data });
     }
 
-    public addUsersToChat(data: ModifyChatUsersRequest) {
+    public addUsersToChat(data: ModifyChatUsersRequest): Promise<any> {
         return this.http.put('/users', { data });
     }
 
-    public deleteUsersFromChat(data: ModifyChatUsersRequest) {
+    public deleteUsersFromChat(data: ModifyChatUsersRequest): Promise<any> {
         return this.http.delete('/users', { data });
     }
 

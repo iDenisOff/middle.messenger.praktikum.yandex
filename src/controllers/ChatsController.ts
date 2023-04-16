@@ -19,20 +19,12 @@ class ChatsController {
         return chatsAPI.createChat(data);
     }
 
-    addUsersToChat(data: ModifyChatUsersRequest) {
-        chatsAPI.addUsersToChat(data)
-            .then(() => {
-                router.go('/messenger');
-            })
-            .catch(console.log);
+    async addUsersToChat(data: ModifyChatUsersRequest) {
+        return chatsAPI.addUsersToChat(data);
     }
 
     deleteUsersFromChat(data: ModifyChatUsersRequest) {
-        chatsAPI.deleteUsersFromChat(data)
-            .then(() => {
-                router.go('/messenger');
-            })
-            .catch(console.log);
+        return chatsAPI.deleteUsersFromChat(data);
     }
 
     deleteChat(data: DeleteChatRequest) {

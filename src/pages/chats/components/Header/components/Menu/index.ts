@@ -56,6 +56,12 @@ export class Menu extends Block {
                     this.children.addUsersToChatModal.element.classList.remove('active');
                     this.children.deleteUsersFromChatModal.element.classList.remove('active');
                     this.children.overlay.element.classList.remove('active');
+
+                    const addUsersInput = this.children.addUsersToChatModal.children.form.element.getElementsByClassName('modal-form_error')[0];
+                    (addUsersInput as HTMLDivElement).innerText = '';
+
+                    const deleteUsersInput = this.children.deleteUsersFromChatModal.children.form.element.getElementsByClassName('modal-form_error')[0];
+                    (deleteUsersInput as HTMLDivElement).innerText = '';
                 }
             }
         });
@@ -91,12 +97,27 @@ export class Menu extends Block {
 
                 (async () => {
                     const foundUsers: User[] = await userController.searchUsers({ login: (input as HTMLInputElement).value });
-                    const data: ModifyChatUsersRequest = {
-                        users: [ foundUsers[0].id ],
-                        chatId: this.props.activeChat.id
-                    };
 
-                    chatsController.addUsersToChat(data);
+                    if (foundUsers.length) {
+                        const data: ModifyChatUsersRequest = {
+                            users: [ foundUsers[0].id ],
+                            chatId: this.props.activeChat.id
+                        };
+
+                        chatsController.addUsersToChat(data)
+                            .then(() => {
+                                this.children.overlay.element.dispatchEvent(new Event('click'));
+                                (input as HTMLInputElement).value = '';
+                            })
+                            .catch((err) => {
+                                const errorEl = this.children.addUsersToChatModal.element.getElementsByClassName('modal-form_error')[0];
+                                (errorEl as HTMLDivElement).innerText = err.reason;
+                            });
+
+                    } else {
+                        const errorEl = this.children.addUsersToChatModal.element.getElementsByClassName('modal-form_error')[0];
+                        (errorEl as HTMLDivElement).innerText = 'Ошибка метода поиска пользователя';
+                    }
                 })();
             }
         });
@@ -110,12 +131,26 @@ export class Menu extends Block {
 
                 (async () => {
                     const foundUsers: User[] = await userController.searchUsers({ login: (input as HTMLInputElement).value });
-                    const data: ModifyChatUsersRequest = {
-                        users: [ foundUsers[0].id ],
-                        chatId: this.props.activeChat.id
-                    };
 
-                    chatsController.deleteUsersFromChat(data);
+                    if (foundUsers.length) {
+                        const data: ModifyChatUsersRequest = {
+                            users: [ foundUsers[0].id ],
+                            chatId: this.props.activeChat.id
+                        };
+
+                        chatsController.deleteUsersFromChat(data)
+                            .then(() => {
+                                this.children.overlay.element.dispatchEvent(new Event('click'));
+                                (input as HTMLInputElement).value = '';
+                            })
+                            .catch((err) => {
+                                const errorEl = this.children.deleteUsersFromChatModal.element.getElementsByClassName('modal-form_error')[0];
+                                (errorEl as HTMLDivElement).innerText = err.reason;
+                            });
+                    } else {
+                        const errorEl = this.children.deleteUsersFromChatModal.element.getElementsByClassName('modal-form_error')[0];
+                        (errorEl as HTMLDivElement).innerText = 'Ошибка метода поиска пользователя';
+                    }
                 })();
             }
         });
