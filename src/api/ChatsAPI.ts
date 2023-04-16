@@ -47,7 +47,7 @@ class ChatsAPI extends BaseAPI {
         return this.http.get<Chat[]>('', { data });
     }
 
-    public createChat(data: CreateChatRequest) {
+    public createChat(data: CreateChatRequest): Promise<any> {
         return this.http.post('', { data });
     }
 

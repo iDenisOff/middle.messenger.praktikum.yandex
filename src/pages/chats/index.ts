@@ -108,7 +108,16 @@ export class Chats extends Block {
                 const input = this.children.addChatModal.children.form.element.getElementsByClassName('input')[0];
                 const data: CreateChatRequest = { title: (input as HTMLInputElement).value };
 
-                chatsController.createChat(data);
+                chatsController.createChat(data)
+                    .then(() => {
+                        this.children.overlay.element.dispatchEvent(new Event('click'));
+                        (input as HTMLInputElement).value = '';
+                        chatsController.fetchChats();
+                    })
+                    .catch((err) => {
+                        const errorEl = this.element.getElementsByClassName('modal-form_error')[0];
+                        (errorEl as HTMLDivElement).innerText = err.reason;
+                    });
             }
         });
         this.children.overlay = new Overlay({});

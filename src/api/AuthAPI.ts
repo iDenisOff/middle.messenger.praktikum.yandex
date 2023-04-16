@@ -34,7 +34,7 @@ class AuthAPI extends BaseAPI {
         return this.http.post('/signup', { data });
     }
 
-    public signin(data: SigninData) {
+    public signin(data: SigninData): Promise<any> {
         return this.http.post('/signin', { data });
     }
 

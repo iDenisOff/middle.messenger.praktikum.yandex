@@ -15,12 +15,8 @@ class ChatsController {
             .catch(console.log);
     }
 
-    createChat(data: CreateChatRequest) {
-        chatsAPI.createChat(data)
-            .then(() => {
-                router.go('/messenger');
-            })
-            .catch(console.log);
+    async createChat(data: CreateChatRequest) {
+        return chatsAPI.createChat(data);
     }
 
     addUsersToChat(data: ModifyChatUsersRequest) {
