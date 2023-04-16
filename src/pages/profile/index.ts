@@ -18,6 +18,7 @@ import {
     UPLOAD_FILE,
     CHANGE
 } from '@src/constants';
+import userController from '@src/controllers/UserController';
 
 import { Avatar } from './components/Avatar';
 import { Row } from './components/Row';
@@ -26,7 +27,6 @@ import { Modal } from './components/Modal';
 
 import template from 'bundle-text:./profile.hbs';
 import './profile.pcss';
-import userController from "@src/controllers/UserController";
 
 class Profile extends Block {
     constructor() {

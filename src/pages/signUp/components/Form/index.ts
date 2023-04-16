@@ -3,7 +3,7 @@ import authController from '@src/controllers/AuthController';
 import router from '@src/utils/Router';
 import { Button } from '@src/components/Button';
 import { FormInput } from '@src/components/FormInput';
-import { validateValue } from '@src/utils/validateValues';
+import { sendForm } from '@src/utils/sendForm';
 import {
     EMAIL,
     ENTER,
@@ -15,8 +15,7 @@ import {
     REGISTRATION,
     SECOND_NAME,
     TypesChecked,
-    USER_NAME,
-    ValueTypes
+    USER_NAME
 } from '@src/constants';
 
 import template from 'bundle-text:./form.hbs';
@@ -57,43 +56,27 @@ export class Form extends Block {
             text: REGISTER,
             events: {
                 click: () => {
-                    let data: Record<string, string> = {};
-                    let isValidData = true;
+                    const data = sendForm(this.children, 'form-input__error');
 
-                    Object.entries(this.children).forEach(([name, el]) => {
-                        if (name === 'signUp' || name === 'signIn') {
-                            return;
-                        }
+                    const passwdValue = (this.children.password.children.input.element as HTMLInputElement).value;
+                    const passwdRetryValue = (this.children.passwordRetry.children.input.element as HTMLInputElement).value;
 
-                        if (name === 'passwordRetry') {
-                            const passwdValue = (this.children.password.children.input.element as HTMLInputElement).value;
-                            const passwdRetryValue = (el.children.input.element as HTMLInputElement).value;
+                    (this.children.passwordRetry.element.getElementsByClassName('form-input__error')[0] as HTMLDivElement).innerText =
+                            passwdValue === passwdRetryValue ? '' : 'Некорректное значение';
 
-                            (el.element.getElementsByClassName('form-input__error')[0] as HTMLDivElement).innerText =
-                                passwdValue === passwdRetryValue ? '' : 'Некорректное значение';
+                    if (passwdValue !== passwdRetryValue) {
+                        return;
+                    }
 
-                            if (passwdValue !== passwdRetryValue) {
-                                isValidData = false;
-                            }
-
-                            return;
-                        }
-
-                        const { value } = (el.children.input.element as HTMLInputElement);
-                        const isValidValue = validateValue(ValueTypes[name], value);
-
-                        (el.element.getElementsByClassName('form-input__error')[0] as HTMLDivElement).innerText =
-                            isValidValue ? '' : 'Некорректное значение';
-
-                        if (isValidValue) {
-                            data[name] = value;
-                        } else {
-                            isValidData = false;
-                        }
-                    });
-
-                    if (isValidData) {
-                        authController.signUp(data)
+                    if (data) {
+                        authController.signUp({
+                            email: data.email,
+                            login: data.login,
+                            first_name: data.first_name,
+                            second_name: data.second_name,
+                            phone: data.phone,
+                            password: data.password
+                        })
                             .then(() => {
                                 router.go('/messenger');
                             })

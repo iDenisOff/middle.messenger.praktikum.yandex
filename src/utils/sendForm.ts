@@ -1,20 +1,28 @@
 import { Block } from '@src/utils/Block';
+import { validateValue } from '@src/utils/validateValues';
+import { ValueTypes } from '@src/constants';
 
-export function sendForm<T extends Record<string, any>>(children:  Record<string, Block<any>>): T {
-    let values: T = {};
+export function sendForm(children: Record<string, Block<any>>, errorClass: string) {
+    let data: Record<string, string> = {};
+    let isValidData = true;
 
     Object.entries(children).forEach(([name, el]) => {
-        if (name === 'signUp' || name === 'signIn' || name === 'link' || name === 'save') {
+        if (name === 'signUp' || name === 'signIn' || name === 'link' || name === 'save' || name === 'password_retry') {
             return;
         }
 
-        const input = el.children.input.element as HTMLInputElement;
-        input.dispatchEvent(new Event('blur'));
+        const { value } = (el.children.input.element as HTMLInputElement);
+        const isValidValue = validateValue(ValueTypes[name], value);
 
-        if (input.value.length !== 0) {
-            values[name] = input.value;
+        (el.element.getElementsByClassName(errorClass)[0] as HTMLDivElement).innerText =
+            isValidValue ? '' : 'Некорректное значение';
+
+        if (isValidValue) {
+            data[name] = value;
+        } else {
+            isValidData = false;
         }
     });
 
-    return values;
+    return !isValidData ? false : data;
 }

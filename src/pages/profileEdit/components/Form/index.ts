@@ -3,7 +3,7 @@ import { store, StoreEvents } from '@src/store/store';
 import userController from '@src/controllers/UserController';
 import { Button } from '@src/components/Button';
 import { EditableRow } from '@src/components/EditableRow';
-import { UserData } from '@src/api/UserAPI';
+import router from '@src/utils/Router';
 import { sendForm } from '@src/utils/sendForm';
 import {
     DISPLAY_NAME,
@@ -50,8 +50,25 @@ export class Form extends Block {
             text: SAVE,
             events: {
                 click: () => {
-                    const data: UserData = sendForm(this.children);
-                    userController.changeUserData(data);
+                    const data = sendForm(this.children, 'editable-row__error');
+
+                    if (data) {
+                        userController.changeUserData({
+                            email: data.email,
+                            login: data.login,
+                            first_name: data.first_name,
+                            second_name: data.second_name,
+                            display_name: data.display_name,
+                            phone: data.phone
+                        })
+                            .then(() => {
+                                router.go('/profile');
+                            })
+                            .catch((err) => {
+                                const errorEl = this.element.getElementsByClassName('profile-edit-form_error')[0];
+                                (errorEl as HTMLDivElement).innerText = err.reason;
+                            });
+                    }
                 }
             }
         });

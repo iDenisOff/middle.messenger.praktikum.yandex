@@ -8,12 +8,8 @@ class UserController {
         return userAPI.changeUserAvatar(data);
     }
 
-    changeUserData(data: UserData) {
-        userAPI.changeUserData(data)
-            .then(() => {
-                router.go('/profile');
-            })
-            .catch(console.log);
+    async changeUserData(data: UserData) {
+        return userAPI.changeUserData(data);
     }
 
     changeUserPassword(data: UserPassword) {
