@@ -59,7 +59,7 @@ class ChatsAPI extends BaseAPI {
         return this.http.delete('/users', { data });
     }
 
-    public deleteChat(data: DeleteChatRequest) {
+    public deleteChat(data: DeleteChatRequest): Promise<any> {
         return this.http.delete('', { data });
     }
 

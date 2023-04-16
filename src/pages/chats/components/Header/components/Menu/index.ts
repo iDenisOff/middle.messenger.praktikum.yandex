@@ -83,7 +83,12 @@ export class Menu extends Block {
             title: DELETE_CHAT,
             events: {
                 click: () => {
-                    chatsController.deleteChat({ chatId: this.props.activeChat.id });
+                    chatsController.deleteChat({ chatId: this.props.activeChat.id })
+                        .then(() => {
+                            store.set('chats.activeChat', null);
+                            chatsController.fetchChats();
+                        })
+                        .catch(console.log);
                 }
             }
         });

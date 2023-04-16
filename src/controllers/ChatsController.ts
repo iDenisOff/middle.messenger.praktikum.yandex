@@ -1,5 +1,4 @@
 import chatsAPI, { Chat } from '@src/api/ChatsAPI';
-import router from '@src/utils/Router';
 import { store } from '@src/store/store';
 import {
     GetChatsRequest,
@@ -27,13 +26,8 @@ class ChatsController {
         return chatsAPI.deleteUsersFromChat(data);
     }
 
-    deleteChat(data: DeleteChatRequest) {
-        chatsAPI.deleteChat(data)
-            .then(() => {
-                store.set('chats.activeChat', null);
-                router.go('/messenger');
-            })
-            .catch(console.log);
+    async deleteChat(data: DeleteChatRequest) {
+        return chatsAPI.deleteChat(data);
     }
 
     async fetchChats() {
