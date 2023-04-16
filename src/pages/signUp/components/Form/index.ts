@@ -15,20 +15,12 @@ import {
     REGISTRATION,
     SECOND_NAME,
     TypesChecked,
-    USER_NAME
+    USER_NAME,
+    ValueTypes
 } from '@src/constants';
 
 import template from 'bundle-text:./form.hbs';
 import './form.pcss';
-
-enum ValueTypes {
-    email = TypesChecked.MAIL,
-    login = TypesChecked.LOGIN,
-    first_name = TypesChecked.NAME,
-    second_name = TypesChecked.NAME,
-    phone = TypesChecked.TELEPHONE,
-    password = TypesChecked.PASSWORD
-}
 
 export class Form extends Block {
     constructor() {

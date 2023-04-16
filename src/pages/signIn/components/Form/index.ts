@@ -1,17 +1,17 @@
 import { Block } from '@src/utils/Block';
 import authController from '@src/controllers/AuthController';
 import router from '@src/utils/Router';
-import { SigninData } from '@src/api/AuthAPI';
 import { Button } from '@src/components/Button';
 import { FormInput } from '@src/components/FormInput';
-import { sendForm } from '@src/utils/sendForm';
+import { validateValue } from '@src/utils/validateValues';
 import {
     ENTER,
     LOG_IN,
     PASSWD,
     REGISTER,
     TypesChecked,
-    USER_NAME
+    USER_NAME,
+    ValueTypes
 } from '@src/constants';
 
 import template from 'bundle-text:./form.hbs';
@@ -49,8 +49,37 @@ export class Form extends Block {
             text: ENTER,
             events: {
                 click: () => {
-                    const data: SigninData = sendForm(this.children);
-                    authController.signIn(data);
+                    let data: Record<string, string> = {};
+                    let isValidData = true;
+
+                    Object.entries(this.children).forEach(([name, el]) => {
+                        if (name === 'signUp' || name === 'signIn') {
+                            return;
+                        }
+
+                        const { value } = (el.children.input.element as HTMLInputElement);
+                        const isValidValue = validateValue(ValueTypes[name], value);
+
+                        (el.element.getElementsByClassName('form-input__error')[0] as HTMLDivElement).innerText =
+                            isValidValue ? '' : 'Некорректное значение';
+
+                        if (isValidValue) {
+                            data[name] = value;
+                        } else {
+                            isValidData = false;
+                        }
+                    });
+
+                    if (isValidData) {
+                        authController.signIn(data)
+                            .then(() => {
+                                router.go('/messenger');
+                            })
+                            .catch((err) => {
+                                const errorEl = this.element.getElementsByClassName('sign-up-form_error')[0];
+                                (errorEl as HTMLDivElement).innerText = err.reason;
+                            });
+                    }
                 }
             }
         });

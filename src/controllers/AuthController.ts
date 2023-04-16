@@ -6,21 +6,10 @@ import router from '@src/utils/Router';
 class AuthController {
     async signUp(data: SignupData) {
         return authApi.signup(data);
-        /*
-        authApi.signup(data)
-            .then(() => {
-                router.go('/messenger');
-            })
-            .catch(console.log);
-         */
     }
 
-    signIn(data: SigninData) {
-        authApi.signin(data)
-            .then(() => {
-                router.go('/messenger');
-            })
-            .catch(console.log);
+    async signIn(data: SigninData) {
+        return authApi.signin(data);
     }
 
     logout() {

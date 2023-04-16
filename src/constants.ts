@@ -49,3 +49,12 @@ export enum Routes {
     PASSWD_EDIT = '/passwd-edit',
     ERROR = '*'
 }
+
+export enum ValueTypes {
+    email = TypesChecked.MAIL,
+    login = TypesChecked.LOGIN,
+    first_name = TypesChecked.NAME,
+    second_name = TypesChecked.NAME,
+    phone = TypesChecked.TELEPHONE,
+    password = TypesChecked.PASSWORD
+}
