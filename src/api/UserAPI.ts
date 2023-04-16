@@ -24,7 +24,7 @@ class UserAPI extends BaseAPI {
         super('/user');
     }
 
-    public changeUserAvatar(data: FormData) {
+    public changeUserAvatar(data: FormData): Promise<any> {
         return this.http.put('/profile/avatar', { data });
     }
 

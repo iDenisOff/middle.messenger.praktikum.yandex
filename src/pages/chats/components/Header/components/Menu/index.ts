@@ -57,11 +57,11 @@ export class Menu extends Block {
                     this.children.deleteUsersFromChatModal.element.classList.remove('active');
                     this.children.overlay.element.classList.remove('active');
 
-                    const addUsersInput = this.children.addUsersToChatModal.children.form.element.getElementsByClassName('modal-form_error')[0];
-                    (addUsersInput as HTMLDivElement).innerText = '';
+                    const addUsersError = this.children.addUsersToChatModal.children.form.element.getElementsByClassName('modal-form_error')[0];
+                    (addUsersError as HTMLDivElement).innerText = '';
 
-                    const deleteUsersInput = this.children.deleteUsersFromChatModal.children.form.element.getElementsByClassName('modal-form_error')[0];
-                    (deleteUsersInput as HTMLDivElement).innerText = '';
+                    const deleteUsersError = this.children.deleteUsersFromChatModal.children.form.element.getElementsByClassName('modal-form_error')[0];
+                    (deleteUsersError as HTMLDivElement).innerText = '';
                 }
             }
         });

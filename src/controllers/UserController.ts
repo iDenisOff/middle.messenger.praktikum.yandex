@@ -4,12 +4,8 @@ import { UserData, UserPassword, SearchUsersRequest } from '@src/api/UserAPI';
 import { User } from '@src/api/AuthAPI';
 
 class UserController {
-    changeUserAvatar(data: FormData) {
-        userAPI.changeUserAvatar(data)
-            .then(() => {
-                router.go('/profile');
-            })
-            .catch(console.log);
+    async changeUserAvatar(data: FormData) {
+        return userAPI.changeUserAvatar(data);
     }
 
     changeUserData(data: UserData) {

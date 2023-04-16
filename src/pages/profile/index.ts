@@ -14,7 +14,9 @@ import {
     DISPLAY_NAME,
     EXIT,
     EDIT_DATA,
-    EDIT_PASSWD
+    EDIT_PASSWD,
+    UPLOAD_FILE,
+    CHANGE
 } from '@src/constants';
 
 import { Avatar } from './components/Avatar';
@@ -24,6 +26,7 @@ import { Modal } from './components/Modal';
 
 import template from 'bundle-text:./profile.hbs';
 import './profile.pcss';
+import userController from "@src/controllers/UserController";
 
 class Profile extends Block {
     constructor() {
@@ -45,6 +48,9 @@ class Profile extends Block {
                 click: () => {
                     this.children.modal.element.classList.remove('active');
                     this.children.overlay.element.classList.remove('active');
+
+                    const error = this.element.getElementsByClassName('modal-form_error')[0];
+                    (error as HTMLDivElement).innerText = '';
                 }
             }
         });
@@ -91,7 +97,29 @@ class Profile extends Block {
                 }
             })
         });
-        this.children.modal = new Modal();
+        this.children.modal = new Modal({
+            title: UPLOAD_FILE,
+            buttonText: CHANGE,
+            onSubmit: () => {
+                const input = this.children.modal.children.form.element.getElementsByClassName('file-input_input')[0];
+                const files = (input as HTMLInputElement).files;
+
+                if (files) {
+                    const formData = new FormData();
+                    formData.append('avatar', files[0]);
+
+                    userController.changeUserAvatar(formData)
+                        .then(() => {
+                            this.children.overlay.element.dispatchEvent(new Event('click'));
+                            authController.fetchUser();
+                        })
+                        .catch((err) => {
+                            const errorEl = this.children.modal.element.getElementsByClassName('modal-form_error')[0];
+                            (errorEl as HTMLDivElement).innerText = err.reason;
+                        });
+                }
+            }
+        });
         this.children.overlay = new Overlay({});
     }
 
