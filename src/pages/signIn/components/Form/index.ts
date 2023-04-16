@@ -3,16 +3,15 @@ import authController from '@src/controllers/AuthController';
 import router from '@src/utils/Router';
 import { Button } from '@src/components/Button';
 import { FormInput } from '@src/components/FormInput';
-import { validateValue } from '@src/utils/validateValues';
 import {
     ENTER,
     LOG_IN,
     PASSWD,
     REGISTER,
     TypesChecked,
-    USER_NAME,
-    ValueTypes
+    USER_NAME
 } from '@src/constants';
+import { sendForm } from '@src/utils/sendForm';
 
 import template from 'bundle-text:./form.hbs';
 import './form.pcss';
@@ -49,29 +48,13 @@ export class Form extends Block {
             text: ENTER,
             events: {
                 click: () => {
-                    let data: Record<string, string> = {};
-                    let isValidData = true;
+                    const data = sendForm(this.children, 'form-input__error');
 
-                    Object.entries(this.children).forEach(([name, el]) => {
-                        if (name === 'signUp' || name === 'signIn') {
-                            return;
-                        }
-
-                        const { value } = (el.children.input.element as HTMLInputElement);
-                        const isValidValue = validateValue(ValueTypes[name], value);
-
-                        (el.element.getElementsByClassName('form-input__error')[0] as HTMLDivElement).innerText =
-                            isValidValue ? '' : 'Некорректное значение';
-
-                        if (isValidValue) {
-                            data[name] = value;
-                        } else {
-                            isValidData = false;
-                        }
-                    });
-
-                    if (isValidData) {
-                        authController.signIn(data)
+                    if (data) {
+                        authController.signIn({
+                            login: data.login,
+                            password: data.password
+                        })
                             .then(() => {
                                 router.go('/messenger');
                             })

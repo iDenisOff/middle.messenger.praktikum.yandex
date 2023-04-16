@@ -1,5 +1,4 @@
 import userAPI from '@src/api/UserAPI';
-import router from '@src/utils/Router';
 import { UserData, UserPassword, SearchUsersRequest } from '@src/api/UserAPI';
 import { User } from '@src/api/AuthAPI';
 
@@ -12,12 +11,8 @@ class UserController {
         return userAPI.changeUserData(data);
     }
 
-    changeUserPassword(data: UserPassword) {
-        userAPI.changeUserPassword(data)
-            .then(() => {
-                router.go('/profile');
-            })
-            .catch(console.log);
+    async changeUserPassword(data: UserPassword) {
+        return userAPI.changeUserPassword(data);
     }
 
     async searchUsers(data: SearchUsersRequest): Promise<User[]> {
