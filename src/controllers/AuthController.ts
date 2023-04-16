@@ -4,18 +4,21 @@ import { store } from '@src/store/store';
 import router from '@src/utils/Router';
 
 class AuthController {
-    signUp(data: SignupData) {
+    async signUp(data: SignupData) {
+        return authApi.signup(data);
+        /*
         authApi.signup(data)
             .then(() => {
-                router.go('/profile');
+                router.go('/messenger');
             })
             .catch(console.log);
+         */
     }
 
     signIn(data: SigninData) {
         authApi.signin(data)
             .then(() => {
-                router.go('/profile');
+                router.go('/messenger');
             })
             .catch(console.log);
     }

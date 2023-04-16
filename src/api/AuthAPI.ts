@@ -30,7 +30,7 @@ class AuthAPI extends BaseAPI {
         super('/auth');
     }
 
-    public signup(data: SignupData) {
+    public signup(data: SignupData): Promise<any> {
         return this.http.post('/signup', { data });
     }
 

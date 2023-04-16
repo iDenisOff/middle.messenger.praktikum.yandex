@@ -1,11 +1,9 @@
 import { Block } from '@src/utils/Block';
 import authController from '@src/controllers/AuthController';
 import router from '@src/utils/Router';
-import { SignupData } from '@src/api/AuthAPI';
 import { Button } from '@src/components/Button';
 import { FormInput } from '@src/components/FormInput';
-import { Link } from '@src/components/Link';
-import { sendForm } from '@src/utils/sendForm';
+import { validateValue } from '@src/utils/validateValues';
 import {
     EMAIL,
     ENTER,
@@ -22,6 +20,15 @@ import {
 
 import template from 'bundle-text:./form.hbs';
 import './form.pcss';
+
+enum ValueTypes {
+    email = TypesChecked.MAIL,
+    login = TypesChecked.LOGIN,
+    first_name = TypesChecked.NAME,
+    second_name = TypesChecked.NAME,
+    phone = TypesChecked.TELEPHONE,
+    password = TypesChecked.PASSWORD
+}
 
 export class Form extends Block {
     constructor() {
@@ -58,14 +65,53 @@ export class Form extends Block {
             text: REGISTER,
             events: {
                 click: () => {
-                    const data: SignupData = sendForm(this.children);
-                    authController.signUp(data);
+                    let data: Record<string, string> = {};
+                    let isValidData = true;
+
+                    Object.entries(this.children).forEach(([name, el]) => {
+                        if (name === 'signUp' || name === 'signIn') {
+                            return;
+                        }
+
+                        if (name === 'passwordRetry') {
+                            const passwdValue = (this.children.password.children.input.element as HTMLInputElement).value;
+                            const passwdRetryValue = (el.children.input.element as HTMLInputElement).value;
+
+                            (el.element.getElementsByClassName('form-input__error')[0] as HTMLDivElement).innerText =
+                                passwdValue === passwdRetryValue ? '' : 'Некорректное значение';
+
+                            if (passwdValue !== passwdRetryValue) {
+                                isValidData = false;
+                            }
+
+                            return;
+                        }
+
+                        const { value } = (el.children.input.element as HTMLInputElement);
+                        const isValidValue = validateValue(ValueTypes[name], value);
+
+                        (el.element.getElementsByClassName('form-input__error')[0] as HTMLDivElement).innerText =
+                            isValidValue ? '' : 'Некорректное значение';
+
+                        if (isValidValue) {
+                            data[name] = value;
+                        } else {
+                            isValidData = false;
+                        }
+                    });
+
+                    if (isValidData) {
+                        authController.signUp(data)
+                            .then(() => {
+                                router.go('/messenger');
+                            })
+                            .catch((err) => {
+                                const errorEl = this.element.getElementsByClassName('sign-up-form_error')[0];
+                                (errorEl as HTMLDivElement).innerText = err.reason;
+                            });
+                    }
                 }
             }
-        });
-        this.children.link = new Link({
-            href: '/',
-            text: ENTER
         });
         this.children.signIn = new Button({
             text: ENTER,
