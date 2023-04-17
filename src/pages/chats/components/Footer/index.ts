@@ -1,5 +1,4 @@
 import { Block } from '@src/utils/Block';
-import { addEventOnInput } from './utils/addEventOnInput';
 import { addEventOnButton } from './utils/addEventOnButton';
 import { MessageInput } from './components/MessageInput';
 import { ButtonWithImg } from './components/ButtonWithImg';
@@ -26,7 +25,6 @@ export class Footer extends Block {
             }
         });
 
-        addEventOnInput(this.children.message as MessageInput);
         addEventOnButton(
             this.children.button as ButtonWithImg,
             this.children.message.element as HTMLInputElement
@@ -36,8 +34,8 @@ export class Footer extends Block {
     init() {
         this.element.classList.add('footer');
 
-        this.children.button = new ButtonWithImg({});
         this.children.message = new MessageInput({});
+        this.children.button = new ButtonWithImg({});
     }
 
     render() {

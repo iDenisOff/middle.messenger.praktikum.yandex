@@ -25,6 +25,7 @@ export const DELETE_CHAT = 'Удалить чат';
 export const DELETE = 'Удалить';
 export const ADD = 'Добавить';
 export const TITLE = 'Название';
+export const MSG = 'Сообщение';
 
 export enum TypesChecked {
     LOGIN = 'login',
@@ -37,7 +38,8 @@ export enum TypesChecked {
 
 export const URLs = {
     API: 'https://ya-praktikum.tech/api/v2',
-    RESOURCES: 'https://ya-praktikum.tech/api/v2/resources'
+    RESOURCES: 'https://ya-praktikum.tech/api/v2/resources',
+    WS: 'wss://ya-praktikum.tech/ws/chats/'
 };
 
 export enum Routes {

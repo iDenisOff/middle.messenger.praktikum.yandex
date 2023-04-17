@@ -1,4 +1,5 @@
 import authApi from '@src/api/AuthAPI';
+import MsgController from './MsgController';
 import { SignupData, SigninData, User } from '@src/api/AuthAPI';
 import { store } from '@src/store/store';
 import router from '@src/utils/Router';
@@ -15,6 +16,7 @@ class AuthController {
     logout() {
         authApi.logout()
             .then(() => {
+                MsgController.closeAll();
                 store.set('user', null);
                 router.go('/');
             })

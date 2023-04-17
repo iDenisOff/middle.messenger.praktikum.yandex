@@ -1,4 +1,6 @@
 import { ButtonWithImg } from '../components/ButtonWithImg';
+import MsgController from '@src/controllers/MsgController';
+import { store } from '@src/store/store';
 
 export const addEventOnButton = (buttonSend: ButtonWithImg, messageInput: HTMLInputElement): void => {
     buttonSend.setProps({
@@ -6,13 +8,12 @@ export const addEventOnButton = (buttonSend: ButtonWithImg, messageInput: HTMLIn
             click: () => {
                 let values: Record<string, string> = {};
 
-                messageInput.dispatchEvent(new Event('blur'));
-
                 if (messageInput.value.length !== 0) {
                     values.message = messageInput.value;
-                }
+                    messageInput.value = '';
 
-                console.log(values);
+                    MsgController.sendMessage(store.getState().chats.activeChat!.id, values.message);
+                }
             }
         }
     });

@@ -1,5 +1,6 @@
 import { EventBus } from '@src/utils/EventBus';
 import { User } from '@src/api/AuthAPI';
+import { Message } from '@src/controllers/MsgController';
 import { Block } from '@src/utils/Block';
 import { Chat } from '@src/api/ChatsAPI';
 import set from '@src/utils/helpers';
@@ -26,6 +27,7 @@ type State = {
         isLoading: boolean;
         hasError: boolean;
     }
+    messages: Record<number, Message[]> | null
 };
 
 const initialState: State = {
@@ -39,7 +41,8 @@ const initialState: State = {
         data: null,
         isLoading: true,
         hasError: false
-    }
+    },
+    messages: null
 };
 
 class Store extends EventBus {

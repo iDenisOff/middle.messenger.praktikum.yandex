@@ -38,6 +38,10 @@ export interface DeleteChatRequest {
     'chatId': number
 }
 
+export interface GetTokenRequest {
+    'token': string
+}
+
 class ChatsAPI extends BaseAPI {
     constructor() {
         super('/chats');
@@ -61,6 +65,10 @@ class ChatsAPI extends BaseAPI {
 
     public deleteChat(data: DeleteChatRequest): Promise<any> {
         return this.http.delete('', { data });
+    }
+
+    public getToken(data: GetTokenRequest): Promise<any> {
+        return this.http.post(`/token/${data.token}`);
     }
 
     create = undefined;

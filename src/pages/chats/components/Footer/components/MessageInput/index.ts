@@ -1,4 +1,5 @@
 import { Block } from '@src/utils/Block';
+import { MSG } from '@src/constants';
 
 import template from 'bundle-text:./messageInput.hbs';
 import './messageInput.pcss';
@@ -20,7 +21,7 @@ export class MessageInput extends Block<MessageInputProps> {
         this.element.classList.add('message-input');
         (this.element as HTMLInputElement).type = 'text';
         (this.element as HTMLInputElement).name = 'message';
-        (this.element as HTMLInputElement).placeholder = 'Сообщение';
+        (this.element as HTMLInputElement).placeholder = MSG;
         (this.element as HTMLInputElement).value = this.props.value ?? '';
     }
 

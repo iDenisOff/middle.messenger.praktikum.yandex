@@ -11,6 +11,7 @@ import {
 import chatsController from '@src/controllers/ChatsController';
 import { store, StoreEvents } from '@src/store/store';
 import { Chat, CreateChatRequest } from '@src/api/ChatsAPI';
+import { getTime } from '@src/utils/helpers';
 
 import { Search } from './components/Search';
 import { Tab } from './components/Tab';
@@ -63,7 +64,7 @@ export class Chats extends Block {
                     activeChatId: chats.activeChat?.id ?? null,
                     name: chat.title,
                     text: chat.last_message?.content,
-                    time: chat.last_message?.time,
+                    time: chat.last_message?.time ? getTime(chat.last_message?.time) : undefined,
                     count: chat.unread_count,
                     events: {
                         click: (e) => {

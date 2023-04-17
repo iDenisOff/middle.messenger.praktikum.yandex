@@ -1,0 +1,35 @@
+@import url('../../../../../../styles.pcss');
+
+.message-block {
+    padding-bottom: 10px;
+
+    &_msg {
+        padding: 11px;
+        border-radius: 10px;
+        width: max-content;
+
+        span {
+            font-weight: 500;
+            font-size: 15px;
+            line-height: 15px;
+        }
+    }
+
+    &_my {
+        div {
+            margin-left: auto;
+            background-color: $color-blue-light;
+        }
+    }
+
+    &_your {
+        div {
+            background-color: $color-white-primary;
+            margin-right: auto;
+        }
+    }
+}
+
+.message-block:last-child {
+    padding-bottom: 0;
+}

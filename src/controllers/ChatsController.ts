@@ -1,4 +1,4 @@
-import chatsAPI, { Chat } from '@src/api/ChatsAPI';
+import chatsAPI, {Chat, GetTokenRequest} from '@src/api/ChatsAPI';
 import { store } from '@src/store/store';
 import {
     GetChatsRequest,
@@ -6,6 +6,7 @@ import {
     ModifyChatUsersRequest,
     DeleteChatRequest
 } from '@src/api/ChatsAPI';
+import MsgController from "@src/controllers/MsgController";
 
 class ChatsController {
     getChats(data: GetChatsRequest) {
@@ -35,12 +36,22 @@ class ChatsController {
 
         await chatsAPI.getChats({})
             .then((chats: Chat[]) => {
+                chats.map(async (chat) => {
+                    const { token } = await this.getToken({ token: chat.id.toString() });
+
+                    await MsgController.connect(chat.id, token);
+                });
+
                 store.set('chats.data', chats);
             })
             .catch(() => console.log)
             .finally(() => {
                 store.set('chats.isLoading', false);
             });
+    }
+
+    async getToken(data: GetTokenRequest) {
+        return await chatsAPI.getToken(data);
     }
 }
 
