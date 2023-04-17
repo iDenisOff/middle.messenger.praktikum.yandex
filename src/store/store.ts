@@ -62,7 +62,6 @@ class Store extends EventBus {
 const store = new Store();
 
 export const withStore = (mapStateToProps: (state: State) => any) => {
-    //TODO: Сделать проверку isEqual
     return (Component: typeof Block) => {
         return class WithStore extends Component {
             constructor(props: any) {

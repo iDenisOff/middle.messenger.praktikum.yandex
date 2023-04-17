@@ -16,7 +16,7 @@ class UserController {
     }
 
     async searchUsers(data: SearchUsersRequest): Promise<User[]> {
-        return await userAPI.searchUsers(data);
+        return userAPI.searchUsers(data);
     }
 }
 

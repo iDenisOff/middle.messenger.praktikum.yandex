@@ -1,4 +1,5 @@
-import chatsAPI, {Chat, GetTokenRequest} from '@src/api/ChatsAPI';
+import chatsAPI, { Chat, GetTokenRequest } from '@src/api/ChatsAPI';
+import MsgController from '@src/controllers/MsgController';
 import { store } from '@src/store/store';
 import {
     GetChatsRequest,
@@ -6,7 +7,6 @@ import {
     ModifyChatUsersRequest,
     DeleteChatRequest
 } from '@src/api/ChatsAPI';
-import MsgController from "@src/controllers/MsgController";
 
 class ChatsController {
     getChats(data: GetChatsRequest) {
@@ -51,7 +51,7 @@ class ChatsController {
     }
 
     async getToken(data: GetTokenRequest) {
-        return await chatsAPI.getToken(data);
+        return chatsAPI.getToken(data);
     }
 }
 
