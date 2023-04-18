@@ -59,6 +59,12 @@ export class Form extends Block {
                                 router.go('/messenger');
                             })
                             .catch((err) => {
+                                if (err.reason === 'User already in system') {
+                                    router.go('/messenger');
+
+                                    return;
+                                }
+
                                 const errorEl = this.element.getElementsByClassName('sign-up-form_error')[0];
                                 (errorEl as HTMLDivElement).innerText = err.reason;
                             });
