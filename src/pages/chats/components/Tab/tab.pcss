@@ -29,6 +29,9 @@
                 color: $color-black-light;
                 font-weight: 600;
                 font-size: 13px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
 
             &_time {
@@ -70,5 +73,9 @@
 }
 
 .tab:hover {
+    background-color: $color-blue-light;
+}
+
+.tab-active {
     background-color: $color-blue-light;
 }

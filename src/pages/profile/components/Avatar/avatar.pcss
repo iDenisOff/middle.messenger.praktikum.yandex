@@ -1,0 +1,38 @@
+.avatar {
+    position: relative;
+    display: inline-block;
+
+    &__before {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2;
+        width: 130px;
+        height: 130px;
+        border-radius: 75px;
+        background-color: rgb(0 0 0 / 50%);
+        text-align: center;
+
+        &_text {
+            color: #fff;
+            line-height: 130px;
+        }
+    }
+
+    &__before:hover {
+        cursor: pointer;
+        display: block;
+    }
+
+    img {
+        max-height: 130px;
+        max-width: 130px;
+        margin: auto;
+        border-radius: 75px;
+    }
+
+    img:hover + div {
+        display: block;
+    }
+}

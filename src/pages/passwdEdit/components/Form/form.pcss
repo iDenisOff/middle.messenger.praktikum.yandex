@@ -1,3 +1,5 @@
+@import url('../../../../../styles.pcss');
+
 .passwd-edit-form {
     min-width: 510px;
 
@@ -7,6 +9,9 @@
 
     &_avatar img {
         margin: auto;
+        max-height: 130px;
+        max-width: 130px;
+        border-radius: 75px;
     }
 
     &_data {
@@ -16,5 +21,11 @@
 
     &_button {
         margin: 0 23%;
+    }
+
+    &_error {
+        text-align: center;
+        font-size: 10px;
+        color: $color-red-primary;
     }
 }

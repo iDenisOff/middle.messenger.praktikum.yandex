@@ -1,6 +1,8 @@
-<div class="profile-edit__back" onclick="window.location.href='{{goBack}}'">
-    <img src={{back}} alt="back" />
-</div>
+{{{back}}}
 <div class="profile-edit__content">
-    {{{form}}}
+    {{#if isLoading}}
+            Loading...
+    {{else}}
+        {{{form}}}
+    {{/if}}
 </div>

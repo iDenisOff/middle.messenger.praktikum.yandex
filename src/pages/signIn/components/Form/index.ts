@@ -1,8 +1,8 @@
 import { Block } from '@src/utils/Block';
+import authController from '@src/controllers/AuthController';
+import router from '@src/utils/Router';
 import { Button } from '@src/components/Button';
 import { FormInput } from '@src/components/FormInput';
-import { Link } from '@src/components/Link';
-import { sendForm } from '@src/utils/sendForm';
 import {
     ENTER,
     LOG_IN,
@@ -11,6 +11,7 @@ import {
     TypesChecked,
     USER_NAME
 } from '@src/constants';
+import { sendForm } from '@src/utils/sendForm';
 
 import template from 'bundle-text:./form.hbs';
 import './form.pcss';
@@ -46,12 +47,37 @@ export class Form extends Block {
         this.children.signIn = new Button({
             text: ENTER,
             events: {
-                click: () => sendForm(this.children)
+                click: () => {
+                    const data = sendForm(this.children, 'form-input__error');
+
+                    if (data) {
+                        authController.signIn({
+                            login: data.login,
+                            password: data.password
+                        })
+                            .then(() => {
+                                router.go('/messenger');
+                            })
+                            .catch((err) => {
+                                if (err.reason === 'User already in system') {
+                                    router.go('/messenger');
+
+                                    return;
+                                }
+
+                                const errorEl = this.element.getElementsByClassName('sign-up-form_error')[0];
+                                (errorEl as HTMLDivElement).innerText = err.reason;
+                            });
+                    }
+                }
             }
         });
-        this.children.link = new Link({
-            href: '/signUp',
-            text: REGISTER
+        this.children.signUp = new Button({
+            text: REGISTER,
+            className: 'transparent',
+            events: {
+                click: () => router.go('/sign-up')
+            }
         });
     }
 

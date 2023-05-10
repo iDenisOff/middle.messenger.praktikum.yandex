@@ -1,0 +1,25 @@
+@import url('../../../../../../../../../styles.pcss');
+
+.menu-element {
+    display: grid;
+    grid-template-columns: max-content auto;
+    grid-column-gap: 15px;
+    padding: 15px;
+
+    &_title {
+        line-height: 22px;
+    }
+}
+
+.menu-element:hover {
+    cursor: pointer;
+    background-color: $color-grey-light;
+}
+
+.menu-element:first-child {
+    border-radius: 12px 12px 0 0;
+}
+
+.menu-element:last-child {
+    border-radius: 0 0 12px 12px;
+}

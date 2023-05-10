@@ -1,0 +1,27 @@
+@import url('../../../styles.pcss');
+
+.modal-form {
+    display: grid;
+    grid-template-rows: repeat(3, max-content);
+    grid-row-gap: 40px;
+
+    &_title {
+        font-weight: 500;
+        font-size: 15px;
+        line-height: 20px;
+        text-align: center;
+        color: $color-black-light;
+    }
+
+    &_error {
+        text-align: center;
+        font-size: 10px;
+        color: $color-red-primary;
+    }
+}
+
+#upload-avatar {
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+}

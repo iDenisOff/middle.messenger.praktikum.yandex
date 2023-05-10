@@ -1,0 +1,27 @@
+@import url('../../../../../styles.pcss');
+
+.modal {
+    opacity: 0;
+    visibility: hidden;
+    width: 100%;
+    max-width: 260px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 30;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 12px;
+}
+
+.modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+#upload-avatar {
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+}

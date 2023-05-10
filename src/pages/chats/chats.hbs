@@ -1,16 +1,29 @@
-<div class="chats__list">
-    <div class="chats__list_link">
-        {{{profileLink}}}
+{{#if isLoading}}
+    Loading...
+{{else}}
+    <div class="chats__list">
+        <div class="chats__list_header">
+            {{{plusChat}}}
+            {{{goToProfile}}}
+        </div>
+        <div class="chats__list_search">
+            {{{search}}}
+        </div>
+        <div class="chats__list_tabs">
+            {{#each tabs}}
+                {{{this}}}
+            {{else}}
+                Список чатов пуст
+            {{/each}}
+        </div>
     </div>
-    <div class="chats__list_search">
-        {{{search}}}
+    <div class="chats__chat">
+        {{#if activeChat}}
+            {{{header}}}
+            {{{content}}}
+            {{{footer}}}
+        {{/if}}
     </div>
-    <div class="chats__list_tabs">
-        {{{tab}}}
-    </div>
-</div>
-<div class="chats__chat">
-    {{{header}}}
-    {{{content}}}
-    {{{footer}}}
-</div>
+    {{{addChatModal}}}
+    {{{overlay}}}
+{{/if}}

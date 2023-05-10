@@ -49,6 +49,12 @@ export class EditableRow extends Block<EditableRowProps> {
     }
 
     render() {
+        if (this.props.value) {
+            this.children.input.setProps({
+                value: this.props.value
+            });
+        }
+
         return this.compile(template, this.props);
     }
 }

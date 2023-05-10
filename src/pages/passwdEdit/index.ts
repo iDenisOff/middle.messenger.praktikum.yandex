@@ -1,5 +1,7 @@
 import { Block } from '@src/utils/Block';
-import back from '@static/back.svg';
+import { BackButton } from '@src/components/BackButton';
+import router from '@src/utils/Router';
+import { withStore } from '@src/store/store';
 
 import { Form } from './components/Form';
 
@@ -9,14 +11,15 @@ import './PasswdEdit.pcss';
 export class PasswdEdit extends Block {
     constructor() {
         super('main', {});
-
-        this.props.back = back;
-        this.props.goBack = '/profile';
     }
 
     init() {
         this.element.classList.add('passwd-edit');
-
+        this.children.back = new BackButton({
+            events: {
+                click: () => router.go('/profile')
+            }
+        });
         this.children.form = new Form();
     }
 
@@ -24,3 +27,7 @@ export class PasswdEdit extends Block {
         return this.compile(template, this.props);
     }
 }
+
+const withUser = withStore((state) => ({ ...state.user }));
+
+export const PasswdEditPage = withUser(PasswdEdit);
