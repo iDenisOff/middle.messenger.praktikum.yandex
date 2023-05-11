@@ -1,6 +1,6 @@
-import { URLs } from '@src/constants';
+import { URLs } from '../constants';
 
-const enum METHOD {
+export const enum METHOD {
     GET = 'get',
     POST = 'post',
     PUT = 'put',

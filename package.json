@@ -2,7 +2,6 @@
   "name": "msngr",
   "version": "1.0.0",
   "description": "Messenger",
-  "type": "module",
   "scripts": {
     "eslint": "npx eslint .",
     "stylelint": "npx stylelint \"**/*.pcss\"",
@@ -10,7 +9,8 @@
     "dev": "parcel index.html",
     "build": "parcel build index.html",
     "express": "node server.js",
-    "start": "npm run build && npm run express"
+    "start": "npm run build && npm run express",
+    "tests": "mocha --require ts-node/register --require ./mochaSetup.js './src/**/*.test.ts'"
   },
   "keywords": [],
   "author": "iDenisOff",
@@ -19,6 +19,9 @@
     "@parcel/transformer-inline-string": "^2.8.3",
     "@parcel/transformer-sass": "^2.8.3",
     "@types/node": "^18.15.0",
+    "@types/mocha": "10.0.0",
+    "@types/chai": "4.3.3",
+    "@types/sinon": "10.0.14",
     "@typescript-eslint/eslint-plugin": "^5.54.1",
     "@typescript-eslint/parser": "^5.54.1",
     "eslint": "^8.35.0",
@@ -35,8 +38,11 @@
     "stylelint": "^15.2.0",
     "stylelint-config-standard": "^30.0.1",
     "typescript": "^4.9.5",
-    "mocha": "^10.2.0",
-    "chai": "^4.3.7"
+    "mocha": "10.1.0",
+    "chai": "4.3.6",
+    "ts-node": "^10.9.1",
+    "jsdom": "20.0.1",
+    "sinon": "15.0.4"
   },
   "dependencies": {
     "express": "^4.18.2",
