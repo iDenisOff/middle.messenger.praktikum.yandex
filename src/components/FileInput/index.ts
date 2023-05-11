@@ -1,6 +1,6 @@
 import { Block } from '@src/utils/Block';
 
-import template from 'bundle-text:./fileInput.hbs';
+import template from './fileInput.hbs';
 import './fileInput.pcss';
 
 export class FileInput extends Block {

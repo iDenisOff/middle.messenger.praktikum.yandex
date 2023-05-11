@@ -8,7 +8,7 @@ import { sendForm } from '@src/utils/sendForm';
 import defAvatar from '@static/avatar.svg';
 import router from '@src/utils/Router';
 
-import template from 'bundle-text:./form.hbs';
+import template from './form.hbs';
 import './form.pcss';
 
 const OldPasswd = 'Старый пароль';

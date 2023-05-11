@@ -19,7 +19,7 @@ import del from '@static/del.svg';
 import { MenuElement } from './components/MenuElement';
 import { Modal } from '../../../Modal';
 
-import template from 'bundle-text:./menu.hbs';
+import template from './menu.hbs';
 import './menu.pcss';
 
 export class Menu extends Block {

@@ -1,6 +1,6 @@
 import { Block } from '@src/utils/Block';
 
-import template from 'bundle-text:./input.hbs';
+import template from './input.hbs';
 import './input.pcss';
 
 interface InputProps {

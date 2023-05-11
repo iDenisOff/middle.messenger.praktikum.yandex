@@ -5,7 +5,7 @@ import { withStore } from '@src/store/store';
 
 import { Form } from './components/Form';
 
-import template from 'bundle-text:./profileEdit.hbs';
+import template from './profileEdit.hbs';
 import './profileEdit.pcss';
 
 export class ProfileEdit extends Block {

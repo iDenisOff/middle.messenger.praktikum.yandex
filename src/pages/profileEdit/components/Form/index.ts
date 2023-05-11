@@ -18,7 +18,7 @@ import {
 } from '@src/constants';
 import defAvatar from '@static/avatar.svg';
 
-import template from 'bundle-text:./form.hbs';
+import template from './form.hbs';
 import './form.pcss';
 
 export class Form extends Block {

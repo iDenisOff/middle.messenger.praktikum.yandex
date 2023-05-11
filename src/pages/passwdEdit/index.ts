@@ -5,7 +5,7 @@ import { withStore } from '@src/store/store';
 
 import { Form } from './components/Form';
 
-import template from 'bundle-text:./passwdEdit.hbs';
+import template from './passwdEdit.hbs';
 import './PasswdEdit.pcss';
 
 export class PasswdEdit extends Block {

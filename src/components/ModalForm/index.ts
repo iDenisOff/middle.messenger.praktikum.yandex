@@ -1,6 +1,6 @@
 import { Block } from '@src/utils/Block';
 
-import template from 'bundle-text:./modalForm.hbs';
+import template from './modalForm.hbs';
 import './modalForm.pcss';
 
 interface ModalFormProps {

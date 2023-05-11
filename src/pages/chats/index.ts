@@ -20,7 +20,7 @@ import { Content } from './components/Content';
 import { Footer } from './components/Footer';
 import { Modal } from './components/Modal';
 
-import template from 'bundle-text:./chats.hbs';
+import template from './chats.hbs';
 import './chats.pcss';
 
 export class Chats extends Block {

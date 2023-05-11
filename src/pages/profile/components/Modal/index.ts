@@ -3,7 +3,7 @@ import { ModalForm } from '@src/components/ModalForm';
 import { FileInput } from '@src/components/FileInput';
 import { Button } from '@src/components/Button';
 
-import template from 'bundle-text:./modal.hbs';
+import template from './modal.hbs';
 import './modal.pcss';
 
 interface ModalProps {

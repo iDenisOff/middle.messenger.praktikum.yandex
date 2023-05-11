@@ -1,7 +1,7 @@
 import { Block } from '@src/utils/Block';
 import { Button } from '@src/components/Button';
 
-import template from 'bundle-text:./rowWithButton.hbs';
+import template from './rowWithButton.hbs';
 import './rowWithButton.pcss';
 
 interface RowWithButtonProps {

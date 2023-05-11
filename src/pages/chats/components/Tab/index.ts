@@ -1,6 +1,6 @@
 import { Block } from '@src/utils/Block';
 
-import template from 'bundle-text:./tab.hbs';
+import template from './tab.hbs';
 import './tab.pcss';
 
 interface TabProps {

@@ -1,6 +1,6 @@
 import { Block } from '@src/utils/Block';
 
-import template from 'bundle-text:./buttonWithImg.hbs';
+import template from './buttonWithImg.hbs';
 import './buttonWithImg.pcss';
 
 interface ButtonWithImgProps {

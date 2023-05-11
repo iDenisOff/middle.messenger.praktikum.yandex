@@ -1,7 +1,7 @@
 import { Block } from '@src/utils/Block';
 import { MSG } from '@src/constants';
 
-import template from 'bundle-text:./messageInput.hbs';
+import template from './messageInput.hbs';
 import './messageInput.pcss';
 
 interface MessageInputProps {

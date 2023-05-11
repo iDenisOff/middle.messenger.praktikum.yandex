@@ -1,6 +1,6 @@
 import { Block } from '@src/utils/Block';
 
-import template from 'bundle-text:./overlay.hbs';
+import template from './overlay.hbs';
 import './overlay.pcss';
 
 interface OverlayProps {

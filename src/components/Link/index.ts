@@ -1,6 +1,6 @@
 import { Block } from '@src/utils/Block';
 
-import template from 'bundle-text:./link.hbs';
+import template from './link.hbs';
 import './link.pcss';
 
 interface LinkProps {

@@ -1,5 +1,3 @@
-import Handlebars from 'handlebars';
-
 import { EventBus } from './EventBus';
 import { nanoid } from 'nanoid';
 
@@ -157,7 +155,7 @@ export class Block<P extends Record<string, any> = any> {
         return new DocumentFragment();
     }
 
-    protected compile(template: string, context: any) {
+    protected compile(template: (context: Record<string, any>) => string, context: any) {
         const contextAndStubs = { ...context };
 
         Object.entries(this.children).forEach(([name, component]) => {
@@ -174,9 +172,7 @@ export class Block<P extends Record<string, any> = any> {
             }
         }
 
-        const tpl = Handlebars.compile(template);
-
-        const html = tpl(contextAndStubs);
+        const html = template(contextAndStubs);
 
         const temp = document.createElement('template');
 

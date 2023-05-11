@@ -13,7 +13,7 @@ import {
 } from '@src/constants';
 import { sendForm } from '@src/utils/sendForm';
 
-import template from 'bundle-text:./form.hbs';
+import template from './form.hbs';
 import './form.pcss';
 
 export class Form extends Block {

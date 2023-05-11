@@ -2,7 +2,7 @@ import { Block } from '@src/utils/Block';
 import { URLs } from '@src/constants';
 import defAvatar from '@static/avatar.svg';
 
-import template from 'bundle-text:./avatar.hbs';
+import template from './avatar.hbs';
 import './avatar.pcss';
 
 interface AvatarProps {

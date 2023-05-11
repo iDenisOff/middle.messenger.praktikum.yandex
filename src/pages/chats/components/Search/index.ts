@@ -1,6 +1,6 @@
 import { Block } from '@src/utils/Block';
 
-import template from 'bundle-text:./search.hbs';
+import template from './search.hbs';
 import './search.pcss';
 
 interface SearchProps {
