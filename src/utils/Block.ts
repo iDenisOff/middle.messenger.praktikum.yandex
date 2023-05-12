@@ -155,7 +155,7 @@ export class Block<P extends Record<string, any> = any> {
         return new DocumentFragment();
     }
 
-    protected compile(template: (context: Record<string, any>) => string, context: any) {
+    protected compile(template: any, context: any) {
         const contextAndStubs = { ...context };
 
         Object.entries(this.children).forEach(([name, component]) => {

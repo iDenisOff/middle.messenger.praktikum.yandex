@@ -19,8 +19,6 @@
   "author": "iDenisOff",
   "license": "ISC",
   "devDependencies": {
-    "@parcel/transformer-inline-string": "^2.8.3",
-    "@parcel/transformer-sass": "^2.8.3",
     "@types/chai": "4.3.3",
     "@types/mocha": "10.0.0",
     "@types/node": "^18.15.0",
@@ -37,8 +35,6 @@
     "jsdom": "20.0.1",
     "mocha": "10.1.0",
     "handlebars-loader": "1.7.3",
-    "parcel": "^2.8.3",
-    "parcel-resolver-tspaths": "^0.0.9",
     "postcss": "^8.4.23",
     "postcss-custom-media": "^9.1.2",
     "postcss-easy-import": "^4.0.0",
