@@ -7,7 +7,7 @@
 
 [Макет в figma](https://www.figma.com/file/jF5fFFzgGOxQeB4CmKWTiE/Chat_external_link?node-id=0%3A1&t=3PRIWndEH6LOnT1M-0)
 
-[Публикация](https://deploy--admirable-llama-6ff5bb.netlify.app)
+[Публикация на render.com](https://msgr.onrender.com)
 
 ### **Команды**
 
@@ -21,4 +21,11 @@
 
 ### **Используемые интрументы**
 
-TypeScript, Stylelint, ESLint
+- TypeScript
+- Stylelint
+- ESLint
+- Webpack
+- Handlebars
+- Postcss
+- Mocha (Chai)
+- Docker
