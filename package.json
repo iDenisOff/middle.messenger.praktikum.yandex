@@ -31,10 +31,11 @@
     "css-loader": "^6.7.3",
     "eslint": "^8.35.0",
     "eslint-config-airbnb-typescript": "^17.0.0",
+    "handlebars-loader": "1.7.3",
     "html-webpack-plugin": "^5.5.0",
+    "husky": "^8.0.3",
     "jsdom": "20.0.1",
     "mocha": "10.1.0",
-    "handlebars-loader": "1.7.3",
     "postcss": "^8.4.23",
     "postcss-custom-media": "^9.1.2",
     "postcss-easy-import": "^4.0.0",
@@ -59,5 +60,10 @@
   "dependencies": {
     "express": "^4.18.2",
     "handlebars": "^4.7.7"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm-run-all test"
+    }
   }
 }
