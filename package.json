@@ -5,7 +5,7 @@
   "scripts": {
     "eslint": "npx eslint .",
     "stylelint": "npx stylelint \"**/*.pcss\"",
-    "test": "npm run eslint && npm run stylelint",
+    "lint:all": "npm run eslint && npm run stylelint",
     "build": "webpack --mode=production --node-env=production",
     "express": "node server.js",
     "start": "npm run build && npm run express",
@@ -63,7 +63,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm-run-all test"
+      "pre-commit": "npm-run-all lint:all tests"
     }
   }
 }
