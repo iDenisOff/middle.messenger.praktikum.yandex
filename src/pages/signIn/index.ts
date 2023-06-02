@@ -2,7 +2,7 @@ import { Block } from '@src/utils/Block';
 
 import { Form } from './components/Form';
 
-import template from 'bundle-text:./signIn.hbs';
+import template from './signIn.hbs';
 import './signIn.pcss';
 
 export class SignIn extends Block {

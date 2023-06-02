@@ -3,7 +3,7 @@ import { store, StoreEvents } from '@src/store/store';
 
 import { MessageBlock } from './MessageBlock';
 
-import template from 'bundle-text:./content.hbs';
+import template from './content.hbs';
 import './content.pcss';
 
 export class Content extends Block {

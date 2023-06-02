@@ -1,6 +1,6 @@
 import { Block } from '@src/utils/Block';
 
-import template from 'bundle-text:./menuElement.hbs';
+import template from './menuElement.hbs';
 import './menuElement.pcss';
 
 interface ElementProps {

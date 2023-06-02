@@ -25,7 +25,7 @@ import { Row } from './components/Row';
 import { RowWithButton } from './components/RowWithButton';
 import { Modal } from './components/Modal';
 
-import template from 'bundle-text:./profile.hbs';
+import template from './profile.hbs';
 import './profile.pcss';
 
 class Profile extends Block {

@@ -4,7 +4,7 @@ import {
     GO_BACK
 } from '@src/constants';
 
-import template from 'bundle-text:./error.hbs';
+import template from './error.hbs';
 import './error.pcss';
 
 export class UIError extends Block {

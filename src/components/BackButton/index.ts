@@ -1,7 +1,7 @@
 import { Block } from '@src/utils/Block';
 import back from '@static/back.svg';
 
-import template from 'bundle-text:./backButton.hbs';
+import template from './backButton.hbs';
 import './backButton.pcss';
 
 interface BackButtonProps {

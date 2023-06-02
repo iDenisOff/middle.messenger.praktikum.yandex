@@ -3,7 +3,7 @@ import { TypesChecked } from '@src/constants';
 import { validateValue } from '@src/utils/validateValues';
 import { Input } from '@src/components/Input';
 
-import template from 'bundle-text:./formInput.hbs';
+import template from './formInput.hbs';
 import './formInput.pcss';
 
 interface FormInputProps {

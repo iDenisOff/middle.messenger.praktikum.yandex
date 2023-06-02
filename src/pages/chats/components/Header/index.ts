@@ -5,7 +5,7 @@ import { Overlay } from '@src/components/Overlay';
 import { ButtonWithImg } from './components/ButtonWithImg';
 import { Menu } from './components/Menu';
 
-import template from 'bundle-text:./header.hbs';
+import template from './header.hbs';
 import './header.pcss';
 
 interface HeaderProps {

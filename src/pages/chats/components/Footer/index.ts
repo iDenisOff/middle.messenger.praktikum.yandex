@@ -4,7 +4,7 @@ import { MessageInput } from './components/MessageInput';
 import { ButtonWithImg } from './components/ButtonWithImg';
 import pin from '@static/pin.svg';
 
-import template from 'bundle-text:./footer.hbs';
+import template from './footer.hbs';
 import './footer.pcss';
 
 interface FooterProps {

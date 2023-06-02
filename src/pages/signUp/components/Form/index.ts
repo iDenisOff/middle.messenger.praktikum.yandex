@@ -18,7 +18,7 @@ import {
     USER_NAME
 } from '@src/constants';
 
-import template from 'bundle-text:./form.hbs';
+import template from './form.hbs';
 import './form.pcss';
 
 export class Form extends Block {

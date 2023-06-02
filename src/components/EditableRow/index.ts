@@ -3,7 +3,7 @@ import { validateValue } from '@src/utils/validateValues';
 import { TypesChecked } from '@src/constants';
 import { Input } from '@src/components/Input';
 
-import template from 'bundle-text:./editableRow.hbs';
+import template from './editableRow.hbs';
 import './editableRow.pcss';
 
 interface EditableRowProps {

@@ -1,7 +1,7 @@
 import { Block } from '@src/utils/Block';
 import send from '@static/send.svg';
 
-import template from 'bundle-text:./buttonWithImg.hbs';
+import template from './buttonWithImg.hbs';
 
 interface ButtonWithImgProps {
     events?: {

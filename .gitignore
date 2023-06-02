@@ -5,6 +5,5 @@
 /dist
 
 /.idea
-/.parcel-cache
 
 package-lock.json

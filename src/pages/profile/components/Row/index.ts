@@ -1,6 +1,6 @@
 import { Block } from '@src/utils/Block';
 
-import template from 'bundle-text:./row.hbs';
+import template from './row.hbs';
 import './row.pcss';
 
 interface RowProps {

@@ -1,6 +1,6 @@
 import { Block } from '@src/utils/Block';
 
-import template from 'bundle-text:./messageBlock.hbs';
+import template from './messageBlock.hbs';
 import './messageBlock.pcss';
 
 interface MessageBlockProps {
